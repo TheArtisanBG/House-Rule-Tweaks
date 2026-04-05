@@ -48,25 +48,25 @@ COPY ~%MOD_FOLDER%/2DA/RACETHAC.2DA~ ~OVERRIDE~
    COPY_EXISTING_REGEXP GLOB ~^.+\.cre$~ ~override~ 
    READ_BYTE	0x272 race
 	PATCH_IF (race = 1) BEGIN
-   LPF ADD_CRE_EFFECT INT_VAR opcode = 326 target = 1 STR_VAR resource = C0RACHUM END
+   LPF ADD_CRE_EFFECT INT_VAR opcode = 326 target = 1 timing = 1 STR_VAR resource = C0RACHUM END
 	END
 	PATCH_IF (race = 2) BEGIN
-   LPF ADD_CRE_EFFECT INT_VAR opcode = 326 target = 1 STR_VAR resource = C0RACELF END
+   LPF ADD_CRE_EFFECT INT_VAR opcode = 326 target = 1 timing = 1 STR_VAR resource = C0RACELF END
 	END
 	PATCH_IF (race = 3) BEGIN
-   LPF ADD_CRE_EFFECT INT_VAR opcode = 326 target = 1 STR_VAR resource = C0RACHEL END
+   LPF ADD_CRE_EFFECT INT_VAR opcode = 326 target = 1 timing = 1 STR_VAR resource = C0RACHEL END
 	END
 	PATCH_IF (race = 4) BEGIN
-   LPF ADD_CRE_EFFECT INT_VAR opcode = 326 target = 1 STR_VAR resource = C0RACDWA END
+   LPF ADD_CRE_EFFECT INT_VAR opcode = 326 target = 1 timing = 1 STR_VAR resource = C0RACDWA END
 	END
 	PATCH_IF (race = 5) BEGIN
-   LPF ADD_CRE_EFFECT INT_VAR opcode = 326 target = 1 STR_VAR resource = C0RACHFL END
+   LPF ADD_CRE_EFFECT INT_VAR opcode = 326 target = 1 timing = 1 STR_VAR resource = C0RACHFL END
 	END
 	PATCH_IF (race = 6) BEGIN
-   LPF ADD_CRE_EFFECT INT_VAR opcode = 326 target = 1 STR_VAR resource = C0RACGNO END
+   LPF ADD_CRE_EFFECT INT_VAR opcode = 326 target = 1 timing = 1 STR_VAR resource = C0RACGNO END
 	END
 	PATCH_IF (race = 7) BEGIN
-   LPF ADD_CRE_EFFECT INT_VAR opcode = 326 target = 1 STR_VAR resource = C0RACHOR END
+   LPF ADD_CRE_EFFECT INT_VAR opcode = 326 target = 1 timing = 1 STR_VAR resource = C0RACHOR END
 	END
       BUT_ONLY
 	  

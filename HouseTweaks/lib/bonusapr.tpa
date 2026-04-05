@@ -137,3 +137,54 @@ COPY_EXISTING_REGEXP GLOB ~^.+\.cre$~ ~override~
    END
       BUT_ONLY
 	  
+COPY_EXISTING_REGEXP GLOB ~^.+\.spl$~ ~override~ 
+   LPF ALTER_EFFECT
+      INT_VAR
+      silent = 1
+      match_opcode = 54
+      match_timing = 0
+      opcode = 278
+   END
+   LPF ALTER_EFFECT
+      INT_VAR
+      silent = 1
+      match_opcode = 54
+      match_timing = 2
+      opcode = 278
+   END
+   LPF ALTER_EFFECT
+      INT_VAR
+      silent = 1
+      match_opcode = 54
+      match_timing = 3
+      opcode = 278
+   END
+   LPF ALTER_EFFECT
+      INT_VAR
+      silent = 1
+      match_opcode = 54
+      match_timing = 5
+      opcode = 278
+   END
+   LPF ALTER_EFFECT
+      INT_VAR
+      silent = 1
+      match_opcode = 54
+      match_timing = 6
+      opcode = 278
+   END
+   LPF ALTER_EFFECT
+      INT_VAR
+      silent = 1
+      match_opcode = 54
+      match_timing = 8
+      opcode = 278
+   END
+   LPF ALTER_EFFECT
+      INT_VAR
+      silent = 1
+      match_opcode = 54
+      match_timing = 10
+      opcode = 278
+   END
+      BUT_ONLY

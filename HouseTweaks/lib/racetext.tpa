@@ -20,6 +20,10 @@ OUTER_SET crawler_lcase = RESOLVE_STR_REF(@560)
 OUTER_SET crawler_ucase = RESOLVE_STR_REF(@81)
 APPEND ~racetext.2da~ ~CARRIONCRAWLER   104        %crawler_lcase%       -1         %crawler_ucase%          -1~ UNLESS ~CARRIONCRAWLER~
 
+OUTER_SET golem_lcase = RESOLVE_STR_REF(@608)
+OUTER_SET golem_ucase = RESOLVE_STR_REF(@119)
+APPEND ~racetext.2da~ ~GOLEM   144        %golem_lcase%       -1         %golem_ucase%          -1~ UNLESS ~GOLEM~
+
 OUTER_SET dog_lcase = RESOLVE_STR_REF(@561)
 OUTER_SET dog_ucase = RESOLVE_STR_REF(@562)
 APPEND ~racetext.2da~ ~DOG   105        %dog_lcase%       -1         %dog_ucase%          -1~ UNLESS ~DOG~
@@ -171,10 +175,6 @@ APPEND ~racetext.2da~ ~GIANT   142        %giant_lcase%       -1         %giant_
 OUTER_SET orc_lcase = RESOLVE_STR_REF(@607)
 OUTER_SET orc_ucase = RESOLVE_STR_REF(@153)
 APPEND ~racetext.2da~ ~ORC   143        %orc_lcase%       -1         %orc_ucase%          -1~ UNLESS ~ORC~
-
-OUTER_SET golem_lcase = RESOLVE_STR_REF(@608)
-OUTER_SET golem_ucase = RESOLVE_STR_REF(@119)
-APPEND ~racetext.2da~ ~GOLEM   144        %golem_lcase%       -1         %golem_ucase%          -1~ UNLESS ~GOLEM~
 
 OUTER_SET elemental_lcase = RESOLVE_STR_REF(@609)
 OUTER_SET elemental_ucase = RESOLVE_STR_REF(@93)

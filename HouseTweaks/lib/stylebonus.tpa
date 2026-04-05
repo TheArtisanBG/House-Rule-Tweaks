@@ -152,7 +152,9 @@ COPY_EXISTING ~weapprof.2da~  ~override~
   PATCH_PHP_EACH weapprof_cols_thief_kitnames AS match_name => foo BEGIN
     FOR (column = 0; column < col_check; ++column) BEGIN
       READ_2DA_ENTRY 0 column col_check name
-      PATCH_IF ("%name%" STRING_COMPARE_CASE "%match_name%" = 0) BEGIN
+      PATCH_IF (("%name%" STRING_COMPARE_CASE "%match_name%" = 0) AND
+              !(("C0FILL_WLOCK" STRING_COMPARE_CASE "%match_name%" = 0) OR
+                ("C0WLOCK" STRING_COMPARE_CASE "%match_name%" = 0))) BEGIN
         SET column += 1 // row with names has an empty entry for the first column
         DEFINE_ASSOCIATIVE_ARRAY weapprof_cols_thief BEGIN ~%column%~ => ~%column%~ END
         SET column = col_count // kill loop
@@ -288,11 +290,11 @@ Non-proficient (0 slots): The wielder incurs a penalty of 1 to THAC0 and Speed F
 
 Proficient (1 slot): The wielder gains a -1 bonus to Armor Class and an additional -1 against missile weapons.
 
-Specialized (2 slots): The wielder is no longer penalized and gains a -2 bonus to Armor Class and an additional -2 against missile weapons.
+Specialized (2 slots): The wielder is no longer penalized and gains a further -1 bonus to Armor Class and an additional -2 against missile weapons.
 
-Master (3 slots): The wielder gains a further -1 bonus to Armor Class and an additional -1 against missile weapons.
+Master (3 slots): The wielder gains a further -2 bonus to Armor Class and an additional -1 against missile weapons.
 
-High Master (4 slots): The wielder gains a further -1 bonus to Armor Class and an additional -1 against missile weapons.
+High Master (4 slots): The wielder gains a further -2 bonus to Armor Class and an additional -1 against missile weapons.
 
 Grand Master (5 slots): The wielder gains a further -2 bonus to Armor Class and an additional -1 against missile weapons.
 
@@ -304,13 +306,13 @@ NOTE: Despite the name of this style, any one-handed melee weapon in combination
 
 Non-proficient (0 slots): The wielder receives no bonus nor penalty.
 
-Proficient (1 slot): The wielder gains a -1 bonus to Armor Class vs. melee attacks, -1 bonus to Speed Factor, and a critical hit threat range of 19-20.
+Proficient (1 slot): The wielder gains a -1 bonus to Armor Class vs. melee weapons, -1 bonus to Speed Factor, and a critical hit threat range of 19-20.
 
-Specialized (2 slots): The wielder gains a +1 bonus to THAC0 and damage rolls, a further -1 bonus to Armor Class vs. melee attacks, Speed Factor, and a critical hit threat range of 18-20.
+Specialized (2 slots): The wielder gains a +1 bonus to THAC0 and damage rolls, a further -1 bonus to Armor Class vs. melee weapons, Speed Factor, and a critical hit threat range of 18-20.
 
-Master (3 slots): The wielder gains a further +1 bonus to THAC0, Speed Factor, and a critical hit threat range of 17-20.
+Master (3 slots): The wielder gains a further +1 bonus to THAC0, Speed Factor, a further -1 bonus to Armor Class vs. melee weapons, and a critical hit threat range of 17-20.
 
-High Master (4 slots): The wielder gains a further +1 bonus to THAC0, damage rolls and Speed Factor.
+High Master (4 slots): The wielder gains a further +1 bonus to THAC0, damage rolls and Speed Factor, and a further -1 bonus to Armor Class vs. melee weapons.
 
 Grand Master (5 slots): The wielder gains a further +1 bonus to THAC0, dmaage rolls, Armor Class vs. melee weapons, Speed Factor and a critical hit threat range of 15-20.~)
 	  END

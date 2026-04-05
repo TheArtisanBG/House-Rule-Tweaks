@@ -33,6 +33,8 @@ WRITE_BYTE 0x1C 20
 WRITE_BYTE 0x31 90
 END
 
+ACTION_IF NOT FILE_EXISTS_IN_GAME ~C0PR#CL.SPL~ THEN BEGIN
+
 COPY_EXISTING_REGEXP GLOB ~.*\.itm~ ~override~ //copies all item files
   PATCH_IF (SOURCE_SIZE > 0x71) BEGIN // avoid crashing on empty items
     READ_BYTE    0x1F fighter //reads the byte containing the fighter usability flag
@@ -73,6 +75,8 @@ COPY_EXISTING_REGEXP GLOB ~.*\.itm~ ~override~ //copies all item files
     END
   END
 BUT_ONLY
+
+END
 
 ///////////////////////////////////////////////////////////////////////////
 // Append to SPLPROT.2DA                                                 //
@@ -194,83 +198,211 @@ COPY_EXISTING ~splprot.2da~ ~override~
     END
     END
 
+APPEND ~splprot.2da~ ~C0_KIT_CHECK 152 -1 1~ UNLESS ~C0_KIT_CHECK~
+COPY_EXISTING ~splprot.2da~ ~override~
+	COUNT_2DA_COLS cols // amount of columns
+	READ_2DA_ENTRIES_NOW rows cols // read all file into memory  
+	FOR (row = 1; row < rows; ++row) BEGIN // iterate over rows
+	  READ_2DA_ENTRY_FORMER rows row 0 ~stat~ // read column value
+	  PATCH_IF ~%stat%~ STRING_EQUAL_CASE ~C0_KIT_CHECK~ BEGIN
+	    SET C0_KIT_CHECK = %row%
+	  END
+	PRETTY_PRINT_2DA
+	END
+
+/////////////////
+//LONG SWORD
+
 COPY_EXISTING ~%MOD_FOLDER%/raceprof/C0PR#00.spl~ ~override/C0PR#LS.SPL~
     LPF ALTER_EFFECT INT_VAR match_opcode = 326 parameter2 = %prof_90% STR_VAR resource = C0PR#LS2 END
-    
-COPY_EXISTING ~%MOD_FOLDER%/raceprof/C0PR#01.spl~ ~override/C0PR#LS2.SPL~
-    LPF ALTER_EFFECT INT_VAR match_opcode = 233 parameter1 = 1 parameter2 = 90 END
-    
-COPY_EXISTING ~%MOD_FOLDER%/raceprof/C0PR#00.spl~ ~override/C0PR#SS.SPL~
-    LPF ALTER_EFFECT INT_VAR match_opcode = 326 parameter2 = %prof_91% STR_VAR resource = C0PR#SS2 END
-    
-COPY_EXISTING ~%MOD_FOLDER%/raceprof/C0PR#01.spl~ ~override/C0PR#SS2.SPL~
-    LPF ALTER_EFFECT INT_VAR match_opcode = 233 parameter1 = 1 parameter2 = 91 END
-    
-COPY_EXISTING ~%MOD_FOLDER%/raceprof/C0PR#00.spl~ ~override/C0PR#LB.SPL~
-    LPF ALTER_EFFECT INT_VAR match_opcode = 326 parameter2 = %prof_104% STR_VAR resource = C0PR#LB2 END
-    
-COPY_EXISTING ~%MOD_FOLDER%/raceprof/C0PR#01.spl~ ~override/C0PR#LB2.SPL~
-    LPF ALTER_EFFECT INT_VAR match_opcode = 233 parameter1 = 1 parameter2 = 104 END
-    
-COPY_EXISTING ~%MOD_FOLDER%/raceprof/C0PR#00.spl~ ~override/C0PR#SB.SPL~
-    LPF ALTER_EFFECT INT_VAR match_opcode = 326 parameter2 = %prof_105% STR_VAR resource = C0PR#SB2 END
-    
-COPY_EXISTING ~%MOD_FOLDER%/raceprof/C0PR#01.spl~ ~override/C0PR#SB2.SPL~
-    LPF ALTER_EFFECT INT_VAR match_opcode = 233 parameter1 = 1 parameter2 = 105 END
-    
-COPY_EXISTING ~%MOD_FOLDER%/raceprof/C0PR#00.spl~ ~override/C0PR#AX.SPL~
-    LPF ALTER_EFFECT INT_VAR match_opcode = 326 parameter2 = %prof_92% STR_VAR resource = C0PR#AX2 END
-    
-COPY_EXISTING ~%MOD_FOLDER%/raceprof/C0PR#01.spl~ ~override/C0PR#AX2.SPL~
-    LPF ALTER_EFFECT INT_VAR match_opcode = 233 parameter1 = 1 parameter2 = 92 END
-    
-COPY_EXISTING ~%MOD_FOLDER%/raceprof/C0PR#00.spl~ ~override/C0PR#HM.SPL~
-    LPF ALTER_EFFECT INT_VAR match_opcode = 326 parameter2 = %prof_97% STR_VAR resource = C0PR#HM2 END
-    
-COPY_EXISTING ~%MOD_FOLDER%/raceprof/C0PR#01.spl~ ~override/C0PR#HM2.SPL~
-    LPF ALTER_EFFECT INT_VAR match_opcode = 233 parameter1 = 1 parameter2 = 97 END
-    
-COPY_EXISTING ~%MOD_FOLDER%/raceprof/C0PR#00.spl~ ~override/C0PR#DG.SPL~
-    LPF ALTER_EFFECT INT_VAR match_opcode = 326 parameter2 = %prof_96% STR_VAR resource = C0PR#DG2 END
-    
-COPY_EXISTING ~%MOD_FOLDER%/raceprof/C0PR#01.spl~ ~override/C0PR#DG2.SPL~
-    LPF ALTER_EFFECT INT_VAR match_opcode = 233 parameter1 = 1 parameter2 = 96 END
-    
-COPY_EXISTING ~%MOD_FOLDER%/raceprof/C0PR#00.spl~ ~override/C0PR#DT.SPL~
-    LPF ALTER_EFFECT INT_VAR match_opcode = 326 parameter2 = %prof_106% STR_VAR resource = C0PR#DT2 END
-    
-COPY_EXISTING ~%MOD_FOLDER%/raceprof/C0PR#01.spl~ ~override/C0PR#DT2.SPL~
-    LPF ALTER_EFFECT INT_VAR match_opcode = 233 parameter1 = 1 parameter2 = 106 END
-    
-COPY_EXISTING ~%MOD_FOLDER%/raceprof/C0PR#00.spl~ ~override/C0PR#SL.SPL~
-    LPF ALTER_EFFECT INT_VAR match_opcode = 326 parameter2 = %prof_107% STR_VAR resource = C0PR#SL2 END
-    
-COPY_EXISTING ~%MOD_FOLDER%/raceprof/C0PR#01.spl~ ~override/C0PR#SL2.SPL~
-    LPF ALTER_EFFECT INT_VAR match_opcode = 233 parameter1 = 1 parameter2 = 107 END
-    
-/*
-COPY_EXISTING ~%MOD_FOLDER%/raceprof/C0PR#00.spl~ ~override/C0PR#LS.SPL~
-    LPF ALTER_EFFECT INT_VAR match_opcode = 326 parameter2 = %prof_90% STR_VAR resource = C0PR#LS2 END
-    LPF CLONE_EFFECT INT_VAR match_opcode = 326 STR_VAR match_resource = C0PR#LS2 resource = C0PR#LS3 END
-    LPF ADD_SPELL_EFFECT INT_VAR insert_point = 0 opcode = 177 target = 1 parameter1 = IDS_OF_SYMBOL (~KIT~ ~FERALAN~) parameter2 = 9 timing = 9 STR_VAR resource = C0PR#LS4 END
 
 COPY_EXISTING ~%MOD_FOLDER%/raceprof/C0PR#01.spl~ ~override/C0PR#LS2.SPL~
-    LPF ADD_SPELL_EFFECT INT_VAR insert_point = 0 opcode = 318 target = 1 parameter1 = 203 parameter2 = 105 timing = 9 STR_VAR resource = C0PR#LS2 END
-    LPF ADD_SPELL_EFFECT INT_VAR insert_point = 0 opcode = 318 target = 1 parameter1 = 207 parameter2 = 105 timing = 9 STR_VAR resource = C0PR#LS2 END
-    LPF ADD_SPELL_EFFECT INT_VAR insert_point = 0 opcode = 318 target = 1 parameter1 = 209 parameter2 = 105 timing = 9 STR_VAR resource = C0PR#LS2 END
-    LPF ADD_SPELL_EFFECT INT_VAR insert_point = 0 opcode = 318 target = 1 parameter1 = IDS_OF_SYMBOL (~KIT~ ~SWASHBUCKLER~) parameter2 = 109 timing = 9 STR_VAR resource = C0PR#LS2 END
-    LPF ALTER_EFFECT INT_VAR match_opcode = 233 parameter1 = 1 parameter2 = 90 END
+    LPF ADD_SPELL_EFFECT INT_VAR insert_point = 0 opcode = 326 target = 1 parameter1 = 203 parameter2 = 105 timing = 9 STR_VAR resource = C0PR#LS3 END
+    LPF ADD_SPELL_EFFECT INT_VAR insert_point = 0 opcode = 326 target = 1 parameter1 = 207 parameter2 = 105 timing = 9 STR_VAR resource = C0PR#LS3 END
+    LPF ADD_SPELL_EFFECT INT_VAR insert_point = 0 opcode = 326 target = 1 parameter1 = 209 parameter2 = 105 timing = 9 STR_VAR resource = C0PR#LS3 END
+    LPF ADD_SPELL_EFFECT INT_VAR insert_point = 0 opcode = 326 target = 1 parameter1 = IDS_OF_SYMBOL (~KIT~ ~SWASHBUCKLER~) parameter2 = C0_KIT_CHECK timing = 9 STR_VAR resource = C0PR#LS3 END
+    LPF ALTER_EFFECT INT_VAR match_opcode = 233 parameter1 = 1 parameter2 = 65626 END
 
-COPY_EXISTING ~%MOD_FOLDER%/raceprof/C0PR#01.spl~ ~override/C0PR#LS3.SPL~
-    LPF ALTER_EFFECT INT_VAR match_opcode = 233 parameter1 = 2 parameter2 = 90 END
-
-COPY_EXISTING ~%MOD_FOLDER%/raceprof/C0PR#00.eff~ ~override/C0PR#LS4.EFF~
-    WRITE_ASCII 0x30 ~C0PR#LS4~
+COPY_EXISTING ~%MOD_FOLDER%/raceprof/C0PR#00.spl~ ~override/C0PR#LS3.SPL~
+    LPF ALTER_EFFECT INT_VAR match_opcode = 326 parameter1 = 2 parameter2 = %prof_90% STR_VAR resource = C0PR#LS4 END
 
 COPY_EXISTING ~%MOD_FOLDER%/raceprof/C0PR#01.spl~ ~override/C0PR#LS4.SPL~
-    LPF ADD_SPELL_EFFECT INT_VAR insert_point = 0 opcode = 318 target = 1 parameter1 = 0 parameter2 = 0 timing = 9 STR_VAR resource = C0PR#LS3 END
-    LPF ALTER_EFFECT INT_VAR match_opcode = 233 parameter1 = 1 parameter2 = 90 END
-*/
+    LPF ADD_SPELL_EFFECT INT_VAR insert_point = 0 opcode = 318 target = 1 parameter1 = IDS_OF_SYMBOL (~KIT~ ~FERALAN~) parameter2 = C0_KIT_CHECK timing = 0 duration = 1 STR_VAR resource = C0PR#LS3 END
+    LPF ALTER_EFFECT INT_VAR match_opcode = 233 parameter1 = 1 parameter2 = 65626 END
+
+/////////////////
+//SHORT SWORD
+
+COPY_EXISTING ~%MOD_FOLDER%/raceprof/C0PR#00.spl~ ~override/C0PR#SS.SPL~
+    LPF ALTER_EFFECT INT_VAR match_opcode = 326 parameter2 = %prof_91% STR_VAR resource = C0PR#SS2 END
+
+COPY_EXISTING ~%MOD_FOLDER%/raceprof/C0PR#01.spl~ ~override/C0PR#SS2.SPL~
+    LPF ADD_SPELL_EFFECT INT_VAR insert_point = 0 opcode = 326 target = 1 parameter1 = 203 parameter2 = 105 timing = 9 STR_VAR resource = C0PR#SS3 END
+    LPF ADD_SPELL_EFFECT INT_VAR insert_point = 0 opcode = 326 target = 1 parameter1 = 207 parameter2 = 105 timing = 9 STR_VAR resource = C0PR#SS3 END
+    LPF ADD_SPELL_EFFECT INT_VAR insert_point = 0 opcode = 326 target = 1 parameter1 = 209 parameter2 = 105 timing = 9 STR_VAR resource = C0PR#SS3 END
+    LPF ADD_SPELL_EFFECT INT_VAR insert_point = 0 opcode = 326 target = 1 parameter1 = IDS_OF_SYMBOL (~KIT~ ~SWASHBUCKLER~) parameter2 = C0_KIT_CHECK timing = 9 STR_VAR resource = C0PR#SS3 END
+    LPF ALTER_EFFECT INT_VAR match_opcode = 233 parameter1 = 1 parameter2 = 65627 END
+
+COPY_EXISTING ~%MOD_FOLDER%/raceprof/C0PR#00.spl~ ~override/C0PR#SS3.SPL~
+    LPF ALTER_EFFECT INT_VAR match_opcode = 326 parameter1 = 2 parameter2 = %prof_91% STR_VAR resource = C0PR#SS4 END
+
+COPY_EXISTING ~%MOD_FOLDER%/raceprof/C0PR#01.spl~ ~override/C0PR#SS4.SPL~
+    LPF ADD_SPELL_EFFECT INT_VAR insert_point = 0 opcode = 318 target = 1 parameter1 = IDS_OF_SYMBOL (~KIT~ ~FERALAN~) parameter2 = C0_KIT_CHECK timing = 0 duration = 1 STR_VAR resource = C0PR#SS3 END
+    LPF ALTER_EFFECT INT_VAR match_opcode = 233 parameter1 = 1 parameter2 = 65627 END
+
+/////////////////
+//LONG BOW
+
+COPY_EXISTING ~%MOD_FOLDER%/raceprof/C0PR#00.spl~ ~override/C0PR#LB.SPL~
+    LPF ALTER_EFFECT INT_VAR match_opcode = 326 parameter2 = %prof_104% STR_VAR resource = C0PR#LB2 END
+
+COPY_EXISTING ~%MOD_FOLDER%/raceprof/C0PR#01.spl~ ~override/C0PR#LB2.SPL~
+    LPF ADD_SPELL_EFFECT INT_VAR insert_point = 0 opcode = 318 target = 1 parameter1 = IDS_OF_SYMBOL (~KIT~ ~KENSAI~) parameter2 = C0_KIT_CHECK timing = 0 duration = 1 STR_VAR resource = C0PR#LB2 END
+    LPF ADD_SPELL_EFFECT INT_VAR insert_point = 0 opcode = 318 target = 1 parameter1 = IDS_OF_SYMBOL (~KIT~ ~CAVALIER~) parameter2 = C0_KIT_CHECK timing = 0 duration = 1 STR_VAR resource = C0PR#LB2 END
+    LPF ADD_SPELL_EFFECT INT_VAR insert_point = 0 opcode = 326 target = 1 parameter1 = 203 parameter2 = 105 timing = 9 STR_VAR resource = C0PR#LB3 END
+    LPF ADD_SPELL_EFFECT INT_VAR insert_point = 0 opcode = 326 target = 1 parameter1 = 207 parameter2 = 105 timing = 9 STR_VAR resource = C0PR#LB3 END
+    LPF ADD_SPELL_EFFECT INT_VAR insert_point = 0 opcode = 326 target = 1 parameter1 = 209 parameter2 = 105 timing = 9 STR_VAR resource = C0PR#LB3 END
+    LPF ALTER_EFFECT INT_VAR match_opcode = 233 parameter1 = 1 parameter2 = 65640 END
+
+COPY_EXISTING ~%MOD_FOLDER%/raceprof/C0PR#00.spl~ ~override/C0PR#LB3.SPL~
+    LPF ALTER_EFFECT INT_VAR match_opcode = 326 parameter1 = 2 parameter2 = %prof_104% STR_VAR resource = C0PR#LB4 END
+
+COPY_EXISTING ~%MOD_FOLDER%/raceprof/C0PR#01.spl~ ~override/C0PR#LB4.SPL~
+    LPF ADD_SPELL_EFFECT INT_VAR insert_point = 0 opcode = 318 target = 1 parameter1 = IDS_OF_SYMBOL (~KIT~ ~BERSERKER~) parameter2 = C0_KIT_CHECK timing = 0 duration = 1 STR_VAR resource = C0PR#LB3 END
+    LPF ADD_SPELL_EFFECT INT_VAR insert_point = 0 opcode = 318 target = 1 parameter1 = IDS_OF_SYMBOL (~KIT~ ~KENSAI~) parameter2 = C0_KIT_CHECK timing = 0 duration = 1 STR_VAR resource = C0PR#LB3 END
+    LPF ADD_SPELL_EFFECT INT_VAR insert_point = 0 opcode = 318 target = 1 parameter1 = IDS_OF_SYMBOL (~KIT~ ~CAVALIER~) parameter2 = C0_KIT_CHECK timing = 0 duration = 1 STR_VAR resource = C0PR#LB3 END
+    LPF ALTER_EFFECT INT_VAR match_opcode = 233 parameter1 = 1 parameter2 = 65640 END
+
+/////////////////
+//SHORT BOW
+
+COPY_EXISTING ~%MOD_FOLDER%/raceprof/C0PR#00.spl~ ~override/C0PR#SB.SPL~
+    LPF ALTER_EFFECT INT_VAR match_opcode = 326 parameter2 = %prof_105% STR_VAR resource = C0PR#SB2 END
+
+COPY_EXISTING ~%MOD_FOLDER%/raceprof/C0PR#01.spl~ ~override/C0PR#SB2.SPL~
+    LPF ADD_SPELL_EFFECT INT_VAR insert_point = 0 opcode = 318 target = 1 parameter1 = IDS_OF_SYMBOL (~KIT~ ~KENSAI~) parameter2 = C0_KIT_CHECK timing = 0 duration = 1 STR_VAR resource = C0PR#SB2 END
+    LPF ADD_SPELL_EFFECT INT_VAR insert_point = 0 opcode = 318 target = 1 parameter1 = IDS_OF_SYMBOL (~KIT~ ~CAVALIER~) parameter2 = C0_KIT_CHECK timing = 0 duration = 1 STR_VAR resource = C0PR#SB2 END
+    LPF ADD_SPELL_EFFECT INT_VAR insert_point = 0 opcode = 326 target = 1 parameter1 = 203 parameter2 = 105 timing = 9 STR_VAR resource = C0PR#SB3 END
+    LPF ADD_SPELL_EFFECT INT_VAR insert_point = 0 opcode = 326 target = 1 parameter1 = 207 parameter2 = 105 timing = 9 STR_VAR resource = C0PR#SB3 END
+    LPF ADD_SPELL_EFFECT INT_VAR insert_point = 0 opcode = 326 target = 1 parameter1 = 209 parameter2 = 105 timing = 9 STR_VAR resource = C0PR#SB3 END
+    LPF ALTER_EFFECT INT_VAR match_opcode = 233 parameter1 = 1 parameter2 = 65641 END
+
+COPY_EXISTING ~%MOD_FOLDER%/raceprof/C0PR#00.spl~ ~override/C0PR#SB3.SPL~
+    LPF ALTER_EFFECT INT_VAR match_opcode = 326 parameter1 = 2 parameter2 = %prof_105% STR_VAR resource = C0PR#SB4 END
+
+COPY_EXISTING ~%MOD_FOLDER%/raceprof/C0PR#01.spl~ ~override/C0PR#SB4.SPL~
+    LPF ADD_SPELL_EFFECT INT_VAR insert_point = 0 opcode = 318 target = 1 parameter1 = IDS_OF_SYMBOL (~KIT~ ~BERSERKER~) parameter2 = C0_KIT_CHECK timing = 0 duration = 1 STR_VAR resource = C0PR#SB3 END
+    LPF ADD_SPELL_EFFECT INT_VAR insert_point = 0 opcode = 318 target = 1 parameter1 = IDS_OF_SYMBOL (~KIT~ ~KENSAI~) parameter2 = C0_KIT_CHECK timing = 0 duration = 1 STR_VAR resource = C0PR#SB3 END
+    LPF ADD_SPELL_EFFECT INT_VAR insert_point = 0 opcode = 318 target = 1 parameter1 = IDS_OF_SYMBOL (~KIT~ ~CAVALIER~) parameter2 = C0_KIT_CHECK timing = 0 duration = 1 STR_VAR resource = C0PR#SB3 END
+    LPF ALTER_EFFECT INT_VAR match_opcode = 233 parameter1 = 1 parameter2 = 65641 END
+
+/////////////////
+//AXE
+
+COPY_EXISTING ~%MOD_FOLDER%/raceprof/C0PR#00.spl~ ~override/C0PR#AX.SPL~
+    LPF ALTER_EFFECT INT_VAR match_opcode = 326 parameter2 = %prof_92% STR_VAR resource = C0PR#AX2 END
+
+COPY_EXISTING ~%MOD_FOLDER%/raceprof/C0PR#01.spl~ ~override/C0PR#AX2.SPL~
+    LPF ADD_SPELL_EFFECT INT_VAR insert_point = 0 opcode = 326 target = 1 parameter1 = 203 parameter2 = 105 timing = 9 STR_VAR resource = C0PR#AX3 END
+    LPF ADD_SPELL_EFFECT INT_VAR insert_point = 0 opcode = 326 target = 1 parameter1 = 207 parameter2 = 105 timing = 9 STR_VAR resource = C0PR#AX3 END
+    LPF ADD_SPELL_EFFECT INT_VAR insert_point = 0 opcode = 326 target = 1 parameter1 = 209 parameter2 = 105 timing = 9 STR_VAR resource = C0PR#AX3 END
+    LPF ADD_SPELL_EFFECT INT_VAR insert_point = 0 opcode = 326 target = 1 parameter1 = IDS_OF_SYMBOL (~KIT~ ~SWASHBUCKLER~) parameter2 = C0_KIT_CHECK timing = 9 STR_VAR resource = C0PR#AX3 END
+    LPF ALTER_EFFECT INT_VAR match_opcode = 233 parameter1 = 1 parameter2 = 65628 END
+
+COPY_EXISTING ~%MOD_FOLDER%/raceprof/C0PR#00.spl~ ~override/C0PR#AX3.SPL~
+    LPF ALTER_EFFECT INT_VAR match_opcode = 326 parameter1 = 2 parameter2 = %prof_92% STR_VAR resource = C0PR#AX4 END
+
+COPY_EXISTING ~%MOD_FOLDER%/raceprof/C0PR#01.spl~ ~override/C0PR#AX4.SPL~
+    LPF ADD_SPELL_EFFECT INT_VAR insert_point = 0 opcode = 318 target = 1 parameter1 = IDS_OF_SYMBOL (~KIT~ ~FERALAN~) parameter2 = C0_KIT_CHECK timing = 0 duration = 1 STR_VAR resource = C0PR#AX3 END
+    LPF ALTER_EFFECT INT_VAR match_opcode = 233 parameter1 = 1 parameter2 = 65628 END
+
+/////////////////
+//WARHAMMER
+
+COPY_EXISTING ~%MOD_FOLDER%/raceprof/C0PR#00.spl~ ~override/C0PR#HM.SPL~
+    LPF ALTER_EFFECT INT_VAR match_opcode = 326 parameter2 = %prof_97% STR_VAR resource = C0PR#HM2 END
+
+COPY_EXISTING ~%MOD_FOLDER%/raceprof/C0PR#01.spl~ ~override/C0PR#HM2.SPL~
+    LPF ADD_SPELL_EFFECT INT_VAR insert_point = 0 opcode = 326 target = 1 parameter1 = 203 parameter2 = 105 timing = 9 STR_VAR resource = C0PR#HM3 END
+    LPF ADD_SPELL_EFFECT INT_VAR insert_point = 0 opcode = 326 target = 1 parameter1 = 207 parameter2 = 105 timing = 9 STR_VAR resource = C0PR#HM3 END
+    LPF ADD_SPELL_EFFECT INT_VAR insert_point = 0 opcode = 326 target = 1 parameter1 = 209 parameter2 = 105 timing = 9 STR_VAR resource = C0PR#HM3 END
+    LPF ADD_SPELL_EFFECT INT_VAR insert_point = 0 opcode = 326 target = 1 parameter1 = IDS_OF_SYMBOL (~KIT~ ~SWASHBUCKLER~) parameter2 = C0_KIT_CHECK timing = 9 STR_VAR resource = C0PR#HM3 END
+    LPF ALTER_EFFECT INT_VAR match_opcode = 233 parameter1 = 1 parameter2 = 65633 END
+
+COPY_EXISTING ~%MOD_FOLDER%/raceprof/C0PR#00.spl~ ~override/C0PR#HM3.SPL~
+    LPF ALTER_EFFECT INT_VAR match_opcode = 326 parameter1 = 2 parameter2 = %prof_97% STR_VAR resource = C0PR#HM4 END
+
+COPY_EXISTING ~%MOD_FOLDER%/raceprof/C0PR#01.spl~ ~override/C0PR#HM4.SPL~
+    LPF ADD_SPELL_EFFECT INT_VAR insert_point = 0 opcode = 318 target = 1 parameter1 = IDS_OF_SYMBOL (~KIT~ ~FERALAN~) parameter2 = C0_KIT_CHECK timing = 0 duration = 1 STR_VAR resource = C0PR#HM3 END
+    LPF ALTER_EFFECT INT_VAR match_opcode = 233 parameter1 = 1 parameter2 = 65633 END
+
+/////////////////
+//DAGGER
+
+COPY_EXISTING ~%MOD_FOLDER%/raceprof/C0PR#00.spl~ ~override/C0PR#DG.SPL~
+    LPF ALTER_EFFECT INT_VAR match_opcode = 326 parameter2 = %prof_96% STR_VAR resource = C0PR#DG2 END
+
+COPY_EXISTING ~%MOD_FOLDER%/raceprof/C0PR#01.spl~ ~override/C0PR#DG2.SPL~
+    LPF ADD_SPELL_EFFECT INT_VAR insert_point = 0 opcode = 326 target = 1 parameter1 = 203 parameter2 = 105 timing = 9 STR_VAR resource = C0PR#DG3 END
+    LPF ADD_SPELL_EFFECT INT_VAR insert_point = 0 opcode = 326 target = 1 parameter1 = 207 parameter2 = 105 timing = 9 STR_VAR resource = C0PR#DG3 END
+    LPF ADD_SPELL_EFFECT INT_VAR insert_point = 0 opcode = 326 target = 1 parameter1 = 209 parameter2 = 105 timing = 9 STR_VAR resource = C0PR#DG3 END
+    LPF ADD_SPELL_EFFECT INT_VAR insert_point = 0 opcode = 326 target = 1 parameter1 = IDS_OF_SYMBOL (~KIT~ ~SWASHBUCKLER~) parameter2 = C0_KIT_CHECK timing = 9 STR_VAR resource = C0PR#DG3 END
+    LPF ALTER_EFFECT INT_VAR match_opcode = 233 parameter1 = 1 parameter2 = 65632 END
+
+COPY_EXISTING ~%MOD_FOLDER%/raceprof/C0PR#00.spl~ ~override/C0PR#DG3.SPL~
+    LPF ALTER_EFFECT INT_VAR match_opcode = 326 parameter1 = 2 parameter2 = %prof_96% STR_VAR resource = C0PR#DG4 END
+
+COPY_EXISTING ~%MOD_FOLDER%/raceprof/C0PR#01.spl~ ~override/C0PR#DG4.SPL~
+    LPF ADD_SPELL_EFFECT INT_VAR insert_point = 0 opcode = 318 target = 1 parameter1 = IDS_OF_SYMBOL (~KIT~ ~FERALAN~) parameter2 = C0_KIT_CHECK timing = 0 duration = 1 STR_VAR resource = C0PR#DG3 END
+    LPF ALTER_EFFECT INT_VAR match_opcode = 233 parameter1 = 1 parameter2 = 65632 END
+
+/////////////////
+//DART
+
+COPY_EXISTING ~%MOD_FOLDER%/raceprof/C0PR#00.spl~ ~override/C0PR#DT.SPL~
+    LPF ALTER_EFFECT INT_VAR match_opcode = 326 parameter2 = %prof_106% STR_VAR resource = C0PR#DT2 END
+
+COPY_EXISTING ~%MOD_FOLDER%/raceprof/C0PR#01.spl~ ~override/C0PR#DT2.SPL~
+    LPF ADD_SPELL_EFFECT INT_VAR insert_point = 0 opcode = 318 target = 1 parameter1 = IDS_OF_SYMBOL (~KIT~ ~KENSAI~) parameter2 = C0_KIT_CHECK timing = 0 duration = 1 STR_VAR resource = C0PR#DT2 END
+    LPF ADD_SPELL_EFFECT INT_VAR insert_point = 0 opcode = 318 target = 1 parameter1 = IDS_OF_SYMBOL (~KIT~ ~CAVALIER~) parameter2 = C0_KIT_CHECK timing = 0 duration = 1 STR_VAR resource = C0PR#DT2 END
+    LPF ADD_SPELL_EFFECT INT_VAR insert_point = 0 opcode = 326 target = 1 parameter1 = 203 parameter2 = 105 timing = 9 STR_VAR resource = C0PR#DT3 END
+    LPF ADD_SPELL_EFFECT INT_VAR insert_point = 0 opcode = 326 target = 1 parameter1 = 207 parameter2 = 105 timing = 9 STR_VAR resource = C0PR#DT3 END
+    LPF ADD_SPELL_EFFECT INT_VAR insert_point = 0 opcode = 326 target = 1 parameter1 = 209 parameter2 = 105 timing = 9 STR_VAR resource = C0PR#DT3 END
+    LPF ALTER_EFFECT INT_VAR match_opcode = 233 parameter1 = 1 parameter2 = 65642 END
+
+COPY_EXISTING ~%MOD_FOLDER%/raceprof/C0PR#00.spl~ ~override/C0PR#DT3.SPL~
+    LPF ALTER_EFFECT INT_VAR match_opcode = 326 parameter1 = 2 parameter2 = %prof_106% STR_VAR resource = C0PR#DT4 END
+
+COPY_EXISTING ~%MOD_FOLDER%/raceprof/C0PR#01.spl~ ~override/C0PR#DT4.SPL~
+    LPF ADD_SPELL_EFFECT INT_VAR insert_point = 0 opcode = 318 target = 1 parameter1 = IDS_OF_SYMBOL (~KIT~ ~BERSERKER~) parameter2 = C0_KIT_CHECK timing = 0 duration = 1 STR_VAR resource = C0PR#DT3 END
+    LPF ADD_SPELL_EFFECT INT_VAR insert_point = 0 opcode = 318 target = 1 parameter1 = IDS_OF_SYMBOL (~KIT~ ~KENSAI~) parameter2 = C0_KIT_CHECK timing = 0 duration = 1 STR_VAR resource = C0PR#DT3 END
+    LPF ADD_SPELL_EFFECT INT_VAR insert_point = 0 opcode = 318 target = 1 parameter1 = IDS_OF_SYMBOL (~KIT~ ~CAVALIER~) parameter2 = C0_KIT_CHECK timing = 0 duration = 1 STR_VAR resource = C0PR#DT3 END
+    LPF ALTER_EFFECT INT_VAR match_opcode = 233 parameter1 = 1 parameter2 = 65642 END
+
+/////////////////
+//SLING
+
+COPY_EXISTING ~%MOD_FOLDER%/raceprof/C0PR#00.spl~ ~override/C0PR#SL.SPL~
+    LPF ALTER_EFFECT INT_VAR match_opcode = 326 parameter2 = %prof_107% STR_VAR resource = C0PR#SL2 END
+
+COPY_EXISTING ~%MOD_FOLDER%/raceprof/C0PR#01.spl~ ~override/C0PR#SL2.SPL~
+    LPF ADD_SPELL_EFFECT INT_VAR insert_point = 0 opcode = 318 target = 1 parameter1 = IDS_OF_SYMBOL (~KIT~ ~KENSAI~) parameter2 = C0_KIT_CHECK timing = 0 duration = 1 STR_VAR resource = C0PR#SL2 END
+    LPF ADD_SPELL_EFFECT INT_VAR insert_point = 0 opcode = 318 target = 1 parameter1 = IDS_OF_SYMBOL (~KIT~ ~CAVALIER~) parameter2 = C0_KIT_CHECK timing = 0 duration = 1 STR_VAR resource = C0PR#SL2 END
+    LPF ADD_SPELL_EFFECT INT_VAR insert_point = 0 opcode = 326 target = 1 parameter1 = 203 parameter2 = 105 timing = 9 STR_VAR resource = C0PR#SL3 END
+    LPF ADD_SPELL_EFFECT INT_VAR insert_point = 0 opcode = 326 target = 1 parameter1 = 207 parameter2 = 105 timing = 9 STR_VAR resource = C0PR#SL3 END
+    LPF ADD_SPELL_EFFECT INT_VAR insert_point = 0 opcode = 326 target = 1 parameter1 = 209 parameter2 = 105 timing = 9 STR_VAR resource = C0PR#SL3 END
+    LPF ALTER_EFFECT INT_VAR match_opcode = 233 parameter1 = 1 parameter2 = 65643 END
+
+COPY_EXISTING ~%MOD_FOLDER%/raceprof/C0PR#00.spl~ ~override/C0PR#SL3.SPL~
+    LPF ALTER_EFFECT INT_VAR match_opcode = 326 parameter1 = 2 parameter2 = %prof_107% STR_VAR resource = C0PR#SL4 END
+
+COPY_EXISTING ~%MOD_FOLDER%/raceprof/C0PR#01.spl~ ~override/C0PR#SL4.SPL~
+    LPF ADD_SPELL_EFFECT INT_VAR insert_point = 0 opcode = 318 target = 1 parameter1 = IDS_OF_SYMBOL (~KIT~ ~BERSERKER~) parameter2 = C0_KIT_CHECK timing = 0 duration = 1 STR_VAR resource = C0PR#SL3 END
+    LPF ADD_SPELL_EFFECT INT_VAR insert_point = 0 opcode = 318 target = 1 parameter1 = IDS_OF_SYMBOL (~KIT~ ~KENSAI~) parameter2 = C0_KIT_CHECK timing = 0 duration = 1 STR_VAR resource = C0PR#SL3 END
+    LPF ADD_SPELL_EFFECT INT_VAR insert_point = 0 opcode = 318 target = 1 parameter1 = IDS_OF_SYMBOL (~KIT~ ~CAVALIER~) parameter2 = C0_KIT_CHECK timing = 0 duration = 1 STR_VAR resource = C0PR#SL3 END
+    LPF ALTER_EFFECT INT_VAR match_opcode = 233 parameter1 = 1 parameter2 = 65643 END
+
+
 COPY_EXISTING ~CHARBASE.CRE~ ~OVERRIDE/CHARBASE1.CRE~
 
 COPY_EXISTING ~CHARBASE1.CRE~ ~OVERRIDE~
@@ -310,7 +442,7 @@ COPY_EXISTING_REGEXP GLOB ~.+\.CRE~ ~override~
 		  LPF DELETE_EFFECT STR_VAR match_resource = C0PR#SS END
 		  LPF DELETE_EFFECT STR_VAR match_resource = C0PR#LB END
 		  LPF DELETE_EFFECT STR_VAR match_resource = C0PR#SB END
-      		SET_BG2_PROFICIENCY 95 1 // SCIMITAR
+      		SET_BG2_PROFICIENCY 106 1 // DART
       		SET_BG2_PROFICIENCY 96 1 // DAGGER
       		SET_BG2_PROFICIENCY 103 1 // CROSSBOW
       	// do things here
@@ -324,7 +456,7 @@ COPY_EXISTING_REGEXP GLOB ~.+\.CRE~ ~override~
 		  LPF DELETE_EFFECT STR_VAR match_resource = C0PR#SS END
 		  LPF DELETE_EFFECT STR_VAR match_resource = C0PR#LB END
 		  LPF DELETE_EFFECT STR_VAR match_resource = C0PR#SB END
-      		SET_BG2_PROFICIENCY 95 1 // SCIMITAR
+      		SET_BG2_PROFICIENCY 106 1 // DART
       		SET_BG2_PROFICIENCY 96 1 // DAGGER
       		SET_BG2_PROFICIENCY 103 1 // CROSSBOW
       	// do things here
@@ -334,7 +466,7 @@ COPY_EXISTING_REGEXP GLOB ~.+\.CRE~ ~override~
 COPY_EXISTING ~CHARBASE1.CRE~ ~HOUSETWEAKS/TEMP/CHARBASE.CRE~
 COPY_EXISTING ~HOUSETWEAKS/TEMP~ ~OVERRIDE~
 
-ACTION_IF MOD_IS_INSTALLED ~HOUSETWEAKS/HOUSETWEAKS.TP2~ ~4~ AND FILE_EXISTS_IN_GAME ~EEex_Actionbar.lua~ BEGIN
+ACTION_IF MOD_IS_INSTALLED ~HOUSETWEAKS/HOUSETWEAKS.TP2~ ~4~ AND MOD_IS_INSTALLED ~EEEX/EEEX.TP2~ ~0~ BEGIN
 
 COPY_EXISTING ~C0PR#LS.SPL~ ~OVERRIDE~
     LPF ADD_SPELL_EFFECT INT_VAR opcode = 401 target = 1 timing = 9 special = IDS_OF_SYMBOL (~STATS~ ~C0_PROFICIENCYLONGSWORD~) parameter1 = 1 parameter2 = 1 END

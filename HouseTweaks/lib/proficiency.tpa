@@ -49,7 +49,7 @@ COPY_EXISTING ~kitlist.2da~ ~override~
   COUNT_2DA_ROWS 9 rows
   FOR (row = 0 ; row < rows ; ++row) BEGIN
     READ_2DA_ENTRY row 8 9 class
-    PATCH_IF ((IS_AN_INT class) AND ((class = 3) OR (class = 8) OR (class = 14) OR (class = 15) OR (class = 17) OR (class = 18))) BEGIN
+    PATCH_IF ((IS_AN_INT class) AND ((class = 3) OR (class = 14) OR (class = 15))) BEGIN
       READ_2DA_ENTRY row 1 9 kitname
       DEFINE_ASSOCIATIVE_ARRAY weapprof_cols_kitnames BEGIN ~%kitname%~ => ~%kitname%~ END
     END
@@ -81,6 +81,42 @@ COPY_EXISTING ~weapprof.2da~  ~override~
   PRETTY_PRINT_2DA
   BUT_ONLY
   
+COPY_EXISTING ~kitlist.2da~ ~override~
+  COUNT_2DA_ROWS 9 rows
+  FOR (row = 0 ; row < rows ; ++row) BEGIN
+    READ_2DA_ENTRY row 8 9 class
+    PATCH_IF ((IS_AN_INT class) AND ((class = 8) OR (class = 17) OR (class = 18))) BEGIN
+      READ_2DA_ENTRY row 1 9 kitname
+      DEFINE_ASSOCIATIVE_ARRAY weapprof_cols_kitnames BEGIN ~%kitname%~ => ~%kitname%~ END
+    END
+  END
+  BUT_ONLY   
+      
+COPY_EXISTING ~weapprof.2da~  ~override~
+  COUNT_2DA_COLS col_count
+  SET col_check = col_count - 1
+  COUNT_2DA_COLS col_count
+  PATCH_PHP_EACH weapprof_cols_kitnames AS match_name => foo BEGIN
+    FOR (column = 0; column < col_check; ++column) BEGIN
+      READ_2DA_ENTRY 0 column col_check name
+      PATCH_IF ("%name%" STRING_COMPARE_CASE "%match_name%" = 0) BEGIN
+        SET column += 1 // row with names has an empty entry for the first column
+        DEFINE_ASSOCIATIVE_ARRAY weapprof_cols BEGIN ~%column%~ => ~%column%~ END
+        SET column = col_count // kill loop
+      END
+    END
+  END
+  PATCH_PHP_EACH weapprof_cols AS column => foo BEGIN
+    FOR (row = 2; row < 32; ++row) BEGIN
+      READ_2DA_ENTRY row column col_count stars
+      PATCH_IF (stars = 0) BEGIN
+        SET_2DA_ENTRY 23 column col_count 2
+      END
+    END
+  END
+  PRETTY_PRINT_2DA
+  BUT_ONLY
+  
 // MAGES
 ACTION_CLEAR_ARRAY weapprof_cols
 ACTION_DEFINE_ASSOCIATIVE_ARRAY weapprof_cols BEGIN 4 => 4 END // bogstandard fighter
@@ -89,7 +125,7 @@ COPY_EXISTING ~kitlist.2da~ ~override~
   COUNT_2DA_ROWS 9 rows
   FOR (row = 0 ; row < rows ; ++row) BEGIN
     READ_2DA_ENTRY row 8 9 class
-    PATCH_IF ((IS_AN_INT class) AND (class = 1)) BEGIN
+    PATCH_IF ((IS_AN_INT class) AND ((class = 1) OR (class = 19))) BEGIN
       READ_2DA_ENTRY row 1 9 kitname
       DEFINE_ASSOCIATIVE_ARRAY weapprof_cols_kitnames BEGIN ~%kitname%~ => ~%kitname%~ END
     END

@@ -1,0 +1,422 @@
+
+// DEXTERITY
+
+COPY ~%MOD_FOLDER%/armor_class~ ~override~
+
+COPY_EXISTING ~DEXMOD.2da~ ~override~
+  COUNT_2DA_ROWS 4 rows
+  FOR (index = 0 ; index < rows ; ++index) BEGIN
+    SET_2DA_ENTRY index 3 4 0
+  END
+  PRETTY_PRINT_2DA
+  BUT_ONLY
+
+ACTION_IF NOT FILE_EXISTS_IN_GAME ~C0PASSEF.SPL~ THEN BEGIN
+COPY ~%MOD_FOLDER%/spells/passive~ ~OVERRIDE~
+END
+
+COPY_EXISTING ~C0PASSEF.SPL~ ~OVERRIDE~
+LPF ADD_SPELL_EFFECT INT_VAR opcode = 326 power = 100 parameter1 = 0 parameter2 = 0 target = 3 timing = 1 STR_VAR resource = C0HTD_00 END
+
+COPY_EXISTING ~C0HTD_D1.SPL~ ~OVERRIDE~
+LPF ADD_SPELL_EFFECT INT_VAR opcode = 326 power = 100 parameter1 = 2 parameter2 = 123 target = 2 timing = 1 STR_VAR resource = C0HTD_01 END
+LPF ADD_SPELL_EFFECT INT_VAR opcode = 326 power = 100 parameter1 = 3 parameter2 = 123 target = 2 timing = 1 STR_VAR resource = C0HTD_02 END
+LPF ADD_SPELL_EFFECT INT_VAR opcode = 326 power = 100 parameter1 = 4 parameter2 = 123 target = 2 timing = 1 STR_VAR resource = C0HTD_03 END
+LPF ADD_SPELL_EFFECT INT_VAR opcode = 326 power = 100 parameter1 = 5 parameter2 = 123 target = 2 timing = 1 STR_VAR resource = C0HTD_04 END
+LPF ADD_SPELL_EFFECT INT_VAR opcode = 326 power = 100 parameter1 = 6 parameter2 = 123 target = 2 timing = 1 STR_VAR resource = C0HTD_05 END
+LPF ADD_SPELL_EFFECT INT_VAR opcode = 326 power = 100 parameter1 = 7 parameter2 = 123 target = 2 timing = 1 STR_VAR resource = C0HTD_06 END
+LPF ADD_SPELL_EFFECT INT_VAR opcode = 326 power = 100 parameter1 = 8 parameter2 = 123 target = 2 timing = 1 STR_VAR resource = C0HTD_07 END
+LPF ADD_SPELL_EFFECT INT_VAR opcode = 326 power = 100 parameter1 = 9 parameter2 = 123 target = 2 timing = 1 STR_VAR resource = C0HTD_08 END
+LPF ADD_SPELL_EFFECT INT_VAR opcode = 326 power = 100 parameter1 = 10 parameter2 = 123 target = 2 timing = 1 STR_VAR resource = C0HTD_09 END
+LPF ADD_SPELL_EFFECT INT_VAR opcode = 326 power = 100 parameter1 = 12 parameter2 = 122 target = 2 timing = 1 STR_VAR resource = C0HTD_12 END
+LPF ADD_SPELL_EFFECT INT_VAR opcode = 326 power = 100 parameter1 = 14 parameter2 = 122 target = 2 timing = 1 STR_VAR resource = C0HTD_14 END
+LPF ADD_SPELL_EFFECT INT_VAR opcode = 326 power = 100 parameter1 = 16 parameter2 = 122 target = 2 timing = 1 STR_VAR resource = C0HTD_16 END
+LPF ADD_SPELL_EFFECT INT_VAR opcode = 326 power = 100 parameter1 = 18 parameter2 = 122 target = 2 timing = 1 STR_VAR resource = C0HTD_18 END
+LPF ADD_SPELL_EFFECT INT_VAR opcode = 326 power = 100 parameter1 = 19 parameter2 = 122 target = 2 timing = 1 STR_VAR resource = C0HTD_19 END
+LPF ADD_SPELL_EFFECT INT_VAR opcode = 326 power = 100 parameter1 = 21 parameter2 = 122 target = 2 timing = 1 STR_VAR resource = C0HTD_21 END
+LPF ADD_SPELL_EFFECT INT_VAR opcode = 326 power = 100 parameter1 = 23 parameter2 = 122 target = 2 timing = 1 STR_VAR resource = C0HTD_23 END
+LPF ADD_SPELL_EFFECT INT_VAR opcode = 326 power = 100 parameter1 = 25 parameter2 = 122 target = 2 timing = 1 STR_VAR resource = C0HTD_25 END
+
+COPY_EXISTING ~C0HTD_01.SPL~ ~OVERRIDE/C0HTD_02.SPL~
+COPY_EXISTING ~C0HTD_01.SPL~ ~OVERRIDE/C0HTD_03.SPL~
+COPY_EXISTING ~C0HTD_01.SPL~ ~OVERRIDE/C0HTD_04.SPL~
+COPY_EXISTING ~C0HTD_01.SPL~ ~OVERRIDE/C0HTD_05.SPL~
+COPY_EXISTING ~C0HTD_01.SPL~ ~OVERRIDE/C0HTD_06.SPL~
+COPY_EXISTING ~C0HTD_01.SPL~ ~OVERRIDE/C0HTD_07.SPL~
+COPY_EXISTING ~C0HTD_01.SPL~ ~OVERRIDE/C0HTD_08.SPL~
+COPY_EXISTING ~C0HTD_01.SPL~ ~OVERRIDE/C0HTD_09.SPL~
+COPY_EXISTING ~C0HTD_01.SPL~ ~OVERRIDE/C0HTD_12.SPL~
+LPF ALTER_EFFECT INT_VAR match_opcode = 0 match_power = 100 parameter1 = 1 END
+COPY_EXISTING ~C0HTD_12.SPL~ ~OVERRIDE/C0HTD_14.SPL~
+COPY_EXISTING ~C0HTD_12.SPL~ ~OVERRIDE/C0HTD_15.SPL~
+COPY_EXISTING ~C0HTD_12.SPL~ ~OVERRIDE/C0HTD_16.SPL~
+COPY_EXISTING ~C0HTD_12.SPL~ ~OVERRIDE/C0HTD_17.SPL~
+COPY_EXISTING ~C0HTD_12.SPL~ ~OVERRIDE/C0HTD_18.SPL~
+COPY_EXISTING ~C0HTD_12.SPL~ ~OVERRIDE/C0HTD_19.SPL~
+COPY_EXISTING ~C0HTD_12.SPL~ ~OVERRIDE/C0HTD_21.SPL~
+COPY_EXISTING ~C0HTD_12.SPL~ ~OVERRIDE/C0HTD_23.SPL~
+COPY_EXISTING ~C0HTD_12.SPL~ ~OVERRIDE/C0HTD_25.SPL~
+
+ACTION_IF FILE_EXISTS_IN_GAME ~C0FS#00.SPL~ THEN BEGIN
+COPY_EXISTING ~splprot.2da~ ~override~
+	COUNT_2DA_COLS cols // amount of columns
+	READ_2DA_ENTRIES_NOW rows cols // read all file into memory  
+	FOR (row = 1; row < rows; ++row) BEGIN // iterate over rows
+	  READ_2DA_ENTRY_FORMER rows row 0 ~stat~ // read column value
+	  PATCH_IF ~%stat%~ STRING_EQUAL_CASE ~IS_FAVORED_SOUL~ BEGIN
+	    SET IS_FAVORED_SOUL = %row%
+	  END
+	END
+PRINT ~%IS_FAVORED_SOUL%~
+END ELSE BEGIN
+OUTER_SET IS_FAVORED_SOUL = %-1%
+	END
+
+COPY_EXISTING_REGEXP GLOB ~.*\.itm~ ~override~ //copies all item files
+  PATCH_IF (SOURCE_SIZE > 0x71) BEGIN // avoid crashing on empty items
+      READ_SHORT    0x1C type //reads the byte containing item type
+	  READ_SHORT    0x22 appearance //reads the byte containing item appearance
+      READ_BYTE    0x1E bard_usability //reads the byte containing the bard usability flag
+      READ_BYTE    0x20 thief_usability //reads the byte containing the thief usability flag
+      READ_BYTE    0x21 row4_usability //reads the byte containing the thief usability flag
+      READ_BYTE    0x29 druid_usability //reads the byte containing the druid usability flag
+
+      PATCH_IF ((type = 2) AND (appearance = 16690) AND ((druid_usability BAND 0b00100000) = 0b00100000)) BEGIN // if it is studded leather armor
+		LPF ADD_ITEM_EQEFFECT INT_VAR silent = 1 target = 1 opcode = 318 timing = 2 STR_VAR resource = C0HTD_25 END
+		LPF ADD_ITEM_EQEFFECT INT_VAR silent = 1 target = 1 opcode = 318 timing = 2 STR_VAR resource = C0HTD_23 END
+		LPF ADD_ITEM_EQEFFECT INT_VAR silent = 1 target = 1 opcode = 318 timing = 2 STR_VAR resource = C0HTD_21 END
+		LPF ADD_ITEM_EQEFFECT INT_VAR silent = 1 target = 1 opcode = 321 timing = 1 STR_VAR resource = C0HTD_25 END
+		LPF ADD_ITEM_EQEFFECT INT_VAR silent = 1 target = 1 opcode = 321 timing = 1 STR_VAR resource = C0HTD_23 END
+		LPF ADD_ITEM_EQEFFECT INT_VAR silent = 1 target = 1 opcode = 321 timing = 1 STR_VAR resource = C0HTD_21 END
+		
+	  INNER_ACTION BEGIN
+	  PRINT ~%SOURCE_RES% is studded leather armor.~
+	  END
+      PATCH_FOR_EACH offset IN 0x50 0x54 BEGIN
+			SPRINT armor_class_desc ~Armor Class: ~
+			SPRINT max_dex_modifier_stud ~Maximum Dexterity AC Modifier: 7~
+        READ_STRREF ~%offset%~ desc
+        PATCH_IF ("%desc%" STRING_COMPARE_REGEXP ~<Invalid Strref -?[0-9]+>~) BEGIN // checking for valid content in string
+          INNER_PATCH_SAVE new_desc ~%desc%~ BEGIN
+            REPLACE_TEXTUALLY ~%armor_class_desc%~ ~%max_dex_modifier_stud%
+%armor_class_desc%~
+		  END
+			SAY_EVALUATED ~%offset%~ ~%new_desc%~
+		  END
+
+			END
+			END
+			END
+			
+	  PATCH_IF ((type = 2) AND (appearance = 16691) AND ((bard_usability BAND 0b01000000) = 0b00000000) AND ((thief_usability BAND 0b01000000) = 0b01000000)) BEGIN // if it is chain mail
+		LPF ADD_ITEM_EQEFFECT INT_VAR silent = 1 target = 1 opcode = 318 timing = 2 STR_VAR resource = C0HTD_25 END
+		LPF ADD_ITEM_EQEFFECT INT_VAR silent = 1 target = 1 opcode = 318 timing = 2 STR_VAR resource = C0HTD_23 END
+		LPF ADD_ITEM_EQEFFECT INT_VAR silent = 1 target = 1 opcode = 318 timing = 2 STR_VAR resource = C0HTD_21 END
+		LPF ADD_ITEM_EQEFFECT INT_VAR silent = 1 target = 1 opcode = 321 timing = 1 STR_VAR resource = C0HTD_25 END
+		LPF ADD_ITEM_EQEFFECT INT_VAR silent = 1 target = 1 opcode = 321 timing = 1 STR_VAR resource = C0HTD_23 END
+		LPF ADD_ITEM_EQEFFECT INT_VAR silent = 1 target = 1 opcode = 321 timing = 1 STR_VAR resource = C0HTD_21 END
+
+	  INNER_ACTION BEGIN
+	  PRINT ~%SOURCE_RES% is chain mail.~
+	  END
+
+      PATCH_FOR_EACH offset IN 0x50 0x54 BEGIN
+			SPRINT armor_class_desc ~Armor Class: ~
+			SPRINT max_dex_modifier_chain ~Maximum Dexterity AC Modifier: 5~
+        READ_STRREF ~%offset%~ desc
+        PATCH_IF ("%desc%" STRING_COMPARE_REGEXP ~<Invalid Strref -?[0-9]+>~) BEGIN // checking for valid content in string
+          INNER_PATCH_SAVE new_desc ~%desc%~ BEGIN
+            REPLACE_TEXTUALLY ~%armor_class_desc%~ ~%max_dex_modifier_chain%
+%armor_class_desc%~
+		  END
+			SAY_EVALUATED ~%offset%~ ~%new_desc%~
+		  END
+
+      END
+			END
+
+      PATCH_IF ((type = 2) AND (appearance = 16691) AND ((bard_usability BAND 0b01000000) = 0b00000000) AND ((thief_usability BAND 0b01000000) = 0b00000000)) BEGIN // if it is elven chain mail
+		LPF ADD_ITEM_EQEFFECT INT_VAR silent = 1 target = 1 opcode = 318 timing = 2 STR_VAR resource = C0HTD_25 END
+		LPF ADD_ITEM_EQEFFECT INT_VAR silent = 1 target = 1 opcode = 318 timing = 2 STR_VAR resource = C0HTD_23 END
+		LPF ADD_ITEM_EQEFFECT INT_VAR silent = 1 target = 1 opcode = 321 timing = 1 STR_VAR resource = C0HTD_25 END
+		LPF ADD_ITEM_EQEFFECT INT_VAR silent = 1 target = 1 opcode = 321 timing = 1 STR_VAR resource = C0HTD_23 END
+		
+	  INNER_ACTION BEGIN
+	  PRINT ~%SOURCE_RES% is elven chain mail.~
+	  END
+      PATCH_FOR_EACH offset IN 0x50 0x54 BEGIN
+			SPRINT armor_class_desc ~Armor Class: ~
+			SPRINT max_dex_modifier_elven ~Maximum Dexterity AC Modifier: 6~
+        READ_STRREF ~%offset%~ desc
+        PATCH_IF ("%desc%" STRING_COMPARE_REGEXP ~<Invalid Strref -?[0-9]+>~) BEGIN // checking for valid content in string
+          INNER_PATCH_SAVE new_desc ~%desc%~ BEGIN
+            REPLACE_TEXTUALLY ~%armor_class_desc%~ ~%max_dex_modifier_elven%
+%armor_class_desc%~
+		  END
+			SAY_EVALUATED ~%offset%~ ~%new_desc%~
+		  END
+
+      END
+			END
+
+      PATCH_IF ((type = 2) AND (appearance = 16691) AND ((bard_usability BAND 0b01000000) = 0b01000000)) BEGIN // if it is splint mail
+		LPF ADD_ITEM_EQEFFECT INT_VAR silent = 1 target = 1 opcode = 318 timing = 2 STR_VAR resource = C0HTD_25 END
+		LPF ADD_ITEM_EQEFFECT INT_VAR silent = 1 target = 1 opcode = 318 timing = 2 STR_VAR resource = C0HTD_23 END
+		LPF ADD_ITEM_EQEFFECT INT_VAR silent = 1 target = 1 opcode = 318 timing = 2 STR_VAR resource = C0HTD_21 END
+		LPF ADD_ITEM_EQEFFECT INT_VAR silent = 1 target = 1 opcode = 318 timing = 2 STR_VAR resource = C0HTD_19 END
+		LPF ADD_ITEM_EQEFFECT INT_VAR silent = 1 target = 1 opcode = 318 timing = 2 STR_VAR resource = C0HTD_18 END
+		LPF ADD_ITEM_EQEFFECT INT_VAR silent = 1 target = 1 opcode = 321 timing = 1 STR_VAR resource = C0HTD_25 END
+		LPF ADD_ITEM_EQEFFECT INT_VAR silent = 1 target = 1 opcode = 321 timing = 1 STR_VAR resource = C0HTD_23 END
+		LPF ADD_ITEM_EQEFFECT INT_VAR silent = 1 target = 1 opcode = 321 timing = 1 STR_VAR resource = C0HTD_21 END
+		LPF ADD_ITEM_EQEFFECT INT_VAR silent = 1 target = 1 opcode = 321 timing = 1 STR_VAR resource = C0HTD_19 END
+		LPF ADD_ITEM_EQEFFECT INT_VAR silent = 1 target = 1 opcode = 321 timing = 1 STR_VAR resource = C0HTD_18 END
+		
+	  INNER_ACTION BEGIN
+	  PRINT ~%SOURCE_RES% is splint mail.~
+	  END
+	  
+      PATCH_FOR_EACH offset IN 0x50 0x54 BEGIN
+			SPRINT armor_class_desc ~Armor Class: ~
+			SPRINT max_dex_modifier_splint ~Maximum Dexterity AC Modifier: 4~
+        READ_STRREF ~%offset%~ desc
+        PATCH_IF ("%desc%" STRING_COMPARE_REGEXP ~<Invalid Strref -?[0-9]+>~) BEGIN // checking for valid content in string
+          INNER_PATCH_SAVE new_desc ~%desc%~ BEGIN
+            REPLACE_TEXTUALLY ~%armor_class_desc%~ ~%max_dex_modifier_splint%
+%armor_class_desc%~
+		  END
+			SAY_EVALUATED ~%offset%~ ~%new_desc%~
+		  END
+
+      END
+			END
+
+      PATCH_IF ((type = 2) AND (appearance = 16692)) BEGIN // if it is plate mail
+		LPF ADD_ITEM_EQEFFECT INT_VAR silent = 1 target = 1 opcode = 318 timing = 2 STR_VAR resource = C0HTD_25 END
+		LPF ADD_ITEM_EQEFFECT INT_VAR silent = 1 target = 1 opcode = 318 timing = 2 STR_VAR resource = C0HTD_23 END
+		LPF ADD_ITEM_EQEFFECT INT_VAR silent = 1 target = 1 opcode = 318 timing = 2 STR_VAR resource = C0HTD_21 END
+		LPF ADD_ITEM_EQEFFECT INT_VAR silent = 1 target = 1 opcode = 318 timing = 2 STR_VAR resource = C0HTD_19 END
+		LPF ADD_ITEM_EQEFFECT INT_VAR silent = 1 target = 1 opcode = 318 timing = 2 STR_VAR resource = C0HTD_18 END
+		LPF ADD_ITEM_EQEFFECT INT_VAR silent = 1 target = 1 opcode = 318 timing = 2 STR_VAR resource = C0HTD_17 END
+		LPF ADD_ITEM_EQEFFECT INT_VAR silent = 1 target = 1 opcode = 318 timing = 2 STR_VAR resource = C0HTD_16 END
+		LPF ADD_ITEM_EQEFFECT INT_VAR silent = 1 target = 1 opcode = 318 timing = 2 STR_VAR resource = C0HTD_15 END
+		LPF ADD_ITEM_EQEFFECT INT_VAR silent = 1 target = 1 opcode = 321 timing = 1 STR_VAR resource = C0HTD_25 END
+		LPF ADD_ITEM_EQEFFECT INT_VAR silent = 1 target = 1 opcode = 321 timing = 1 STR_VAR resource = C0HTD_23 END
+		LPF ADD_ITEM_EQEFFECT INT_VAR silent = 1 target = 1 opcode = 321 timing = 1 STR_VAR resource = C0HTD_21 END
+		LPF ADD_ITEM_EQEFFECT INT_VAR silent = 1 target = 1 opcode = 321 timing = 1 STR_VAR resource = C0HTD_19 END
+		LPF ADD_ITEM_EQEFFECT INT_VAR silent = 1 target = 1 opcode = 321 timing = 1 STR_VAR resource = C0HTD_18 END
+		LPF ADD_ITEM_EQEFFECT INT_VAR silent = 1 target = 1 opcode = 321 timing = 1 STR_VAR resource = C0HTD_17 END
+		LPF ADD_ITEM_EQEFFECT INT_VAR silent = 1 target = 1 opcode = 321 timing = 1 STR_VAR resource = C0HTD_16 END
+		LPF ADD_ITEM_EQEFFECT INT_VAR silent = 1 target = 1 opcode = 321 timing = 1 STR_VAR resource = C0HTD_15 END
+
+	  INNER_ACTION BEGIN
+	  PRINT ~%SOURCE_RES% is plate mail.~
+	  END
+
+      PATCH_FOR_EACH offset IN 0x50 0x54 BEGIN
+			SPRINT armor_class_desc ~Armor Class: ~
+			SPRINT max_dex_modifier_plate ~Maximum Dexterity AC Modifier: 2~
+        READ_STRREF ~%offset%~ desc
+        PATCH_IF ("%desc%" STRING_COMPARE_REGEXP ~<Invalid Strref -?[0-9]+>~) BEGIN // checking for valid content in string
+          INNER_PATCH_SAVE new_desc ~%desc%~ BEGIN
+            REPLACE_TEXTUALLY ~%armor_class_desc%~ ~%max_dex_modifier_plate%
+%armor_class_desc%~
+		  END
+			SAY_EVALUATED ~%offset%~ ~%new_desc%~
+		  END
+END
+
+		PATCH_IF (type = 2) AND (appearance = 16692) BEGIN
+			READ_LONG  0x6a ef_off
+			READ_SHORT 0x70 ef_num
+				FOR (i=0;i<ef_num;++i) BEGIN
+				READ_SHORT ef_off+i*0x30 opcode
+				READ_LONG ef_off+i*0x30+8 effect
+				PATCH_IF ((opcode = 0) AND (effect = 4)) BEGIN
+					LPF ADD_ITEM_EQEFFECT INT_VAR silent = 1 target = 1 opcode = 318 timing = 2 STR_VAR resource = C0HTD_14 END
+					LPF ADD_ITEM_EQEFFECT INT_VAR silent = 1 target = 1 opcode = 321 timing = 1 STR_VAR resource = C0HTD_14 END
+					
+    				  PATCH_FOR_EACH offset IN 0x50 0x54 BEGIN
+							SPRINT max_dex_modifier_plate ~Maximum Dexterity AC Modifier: 2~
+							SPRINT max_dex_modifier_full ~Maximum Dexterity AC Modifier: 1~
+    				    READ_STRREF ~%offset%~ desc
+    				    PATCH_IF ("%desc%" STRING_COMPARE_REGEXP ~<Invalid Strref -?[0-9]+>~) BEGIN // checking for valid content in string
+    				      INNER_PATCH_SAVE new_desc ~%desc%~ BEGIN
+    				        REPLACE_TEXTUALLY ~%max_dex_modifier_plate%~ ~%max_dex_modifier_full%~
+						  END
+							SAY_EVALUATED ~%offset%~ ~%new_desc%~
+						  END
+    				  END
+      					    SET i = ef_num // kill loop
+				END
+				END
+				PATCH_IF (type = 2) AND (appearance = 16692) BEGIN
+	 		SET non_metal_armor = 1
+			READ_LONG  0x6a ef_off
+			READ_SHORT 0x70 ef_num
+				FOR (i=0;i<ef_num;++i) BEGIN
+				READ_SHORT ef_off+i*0x30 opcode
+				READ_SHORT ef_off+i*0x30+3 power
+				READ_LONG ef_off+i*0x30+8 effect
+				READ_ASCII ef_off+i*0x30+20 resref
+				READ_LONG ef_off+i*0x30+44 special
+				PATCH_IF (((row4_usability BAND 0b01000000) = 0b01000000)) OR ((opcode = 319) AND (power = 2) AND (effect = IS_FAVORED_SOUL)) BEGIN
+      					    SET i = ef_num // kill loop
+						SET non_metal_armor = 0
+				END
+
+				END
+				PATCH_IF (((druid_usability BAND 0b01000000) = 0b00000000)) BEGIN
+						SET non_metal_armor = 1
+				END
+				PATCH_IF (type = 2) AND (appearance = 16692) AND (((row4_usability BAND 0b01000000) = 0b00000000) OR ((druid_usability BAND 0b01000000) = 0b00000000)) AND (non_metal_armor = 1) BEGIN
+						LPF DELETE_EFFECT STR_VAR match_resource = C0HTD_12 END
+						LPF DELETE_EFFECT STR_VAR match_resource = C0HTD_14 END
+						LPF DELETE_EFFECT STR_VAR match_resource = C0HTD_15 END
+						LPF DELETE_EFFECT STR_VAR match_resource = C0HTD_16 END
+	  					INNER_ACTION BEGIN
+	  					PRINT ~%SOURCE_RES% is non-metal plate mail.~
+      					END  
+
+    				  PATCH_FOR_EACH offset IN 0x50 0x54 BEGIN
+							SPRINT max_dex_modifier_plate ~Maximum Dexterity AC Modifier: 1~
+							SPRINT max_dex_modifier_full ~Maximum Dexterity AC Modifier: 3~
+    				    READ_STRREF ~%offset%~ desc
+    				    PATCH_IF ("%desc%" STRING_COMPARE_REGEXP ~<Invalid Strref -?[0-9]+>~) BEGIN // checking for valid content in string
+    				      INNER_PATCH_SAVE new_desc ~%desc%~ BEGIN
+    				        REPLACE_TEXTUALLY ~%max_dex_modifier_plate%~ ~%max_dex_modifier_full%~
+						  END
+							SAY_EVALUATED ~%offset%~ ~%new_desc%~
+		END
+		END
+		END
+		END
+		END
+      END
+BUT_ONLY
+
+	  ////////////////
+ 
+// SHIELDS
+
+COPY_EXISTING_REGEXP GLOB ~.*\.itm~ ~override~ //copies all item files
+  PATCH_IF (SOURCE_SIZE > 0x71) BEGIN // avoid crashing on empty items
+      READ_SHORT    0x1C type //reads the byte containing item type
+      READ_BYTE    0x1E row1 //reads the byte containing the bard usability flag
+      READ_BYTE    0x19 row2 //reads the byte containing the fighter usability flag
+      READ_BYTE    0x20 row3 //reads the byte containing the fighter usability flag
+      READ_BYTE    0x21 row4 //reads the byte containing the fighter usability flag
+	  READ_SHORT    0x22 appearance //reads the byte containing item appearance
+      PATCH_IF (type = 12) AND ((appearance = 13379) OR (appearance = 12612))
+	  			AND (((row2 BAND 0b00001000) = 0b00000000)) BEGIN // if it is a buckler in appearance
+        WRITE_BYTE    0x20 (row3 BAND 0b11111011)  // makes usable by mages
+		LPF DELETE_EFFECT INT_VAR match_opcode = 319 STR_VAR match_resource = C0EKARM_ END
+	  END
+      PATCH_IF (type = 12) AND ((appearance = 12355) OR (appearance = 12868))
+	  			AND (((row2 BAND 0b00001000) = 0b00000000)) BEGIN // if it is a buckler in appearance
+        WRITE_BYTE    0x20 (row3 BAND 0b10110111)  // makes usable by mages
+	  END
+
+      PATCH_IF (type = 12) AND ((appearance = 12355) OR (appearance = 12868)) BEGIN // if it is a small shield in appearance
+	  LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 0 match_target = 1 match_timing = 2 match_parameter2 = 0 match_parameter1 = 9 parameter1 = 10 END
+	  LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 0 match_target = 1 match_timing = 2 match_parameter2 = 0 match_parameter1 = 8 parameter1 = 9 END
+	  LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 0 match_target = 1 match_timing = 2 match_parameter2 = 0 match_parameter1 = 7 parameter1 = 8 END
+	  LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 0 match_target = 1 match_timing = 2 match_parameter2 = 0 match_parameter1 = 6 parameter1 = 7 END
+	  LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 0 match_target = 1 match_timing = 2 match_parameter2 = 0 match_parameter1 = 5 parameter1 = 6 END
+	  LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 0 match_target = 1 match_timing = 2 match_parameter2 = 0 match_parameter1 = 4 parameter1 = 5 END
+	  LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 0 match_target = 1 match_timing = 2 match_parameter2 = 0 match_parameter1 = 3 parameter1 = 4 END
+	  LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 0 match_target = 1 match_timing = 2 match_parameter2 = 0 match_parameter1 = 2 parameter1 = 3 END
+	  LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 0 match_target = 1 match_timing = 2 match_parameter2 = 0 match_parameter1 = 1 parameter1 = 2 END
+
+      PATCH_FOR_EACH offset IN 0x50 0x54 BEGIN
+			TEXT_SPRINT armor_class_desc ~Armor Class: ~
+        READ_STRREF ~%offset%~ desc
+        PATCH_IF ("%desc%" STRING_COMPARE_REGEXP ~<Invalid Strref -?[0-9]+>~) BEGIN // checking for valid content in string
+          INNER_PATCH_SAVE new_desc ~%desc%~ BEGIN
+            REPLACE_TEXTUALLY EXACT_MATCH ~%armor_class_desc%+1~ ~%armor_class_desc%[AC_BONUS]+2~
+            REPLACE_TEXTUALLY EXACT_MATCH ~%armor_class_desc%+2~ ~%armor_class_desc%[AC_BONUS]+3~
+            REPLACE_TEXTUALLY EXACT_MATCH ~%armor_class_desc%+3~ ~%armor_class_desc%[AC_BONUS]+4~
+            REPLACE_TEXTUALLY EXACT_MATCH ~%armor_class_desc%+4~ ~%armor_class_desc%[AC_BONUS]+5~
+            REPLACE_TEXTUALLY EXACT_MATCH ~%armor_class_desc%+5~ ~%armor_class_desc%[AC_BONUS]+6~
+            REPLACE_TEXTUALLY EXACT_MATCH ~%armor_class_desc%+6~ ~%armor_class_desc%[AC_BONUS]+7~
+            REPLACE_TEXTUALLY EXACT_MATCH ~%armor_class_desc%+7~ ~%armor_class_desc%[AC_BONUS]+8~
+            REPLACE_TEXTUALLY EXACT_MATCH ~%armor_class_desc%+8~ ~%armor_class_desc%[AC_BONUS]+9~
+            REPLACE_TEXTUALLY EXACT_MATCH ~%armor_class_desc%+9~ ~%armor_class_desc%[AC_BONUS]+10~
+		  END
+			SAY_EVALUATED ~%offset%~ ~%new_desc%~
+		  END
+		  END
+
+	  END
+      PATCH_IF (type = 12) AND ((appearance = 12611) OR (appearance = 13124) OR (appearance = 13123) OR (appearance = 13635) OR (appearance = 13891) OR (appearance = 14147)) BEGIN // if it is a medium shield in appearance
+	  LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 0 match_target = 1 match_timing = 2 match_parameter2 = 0 match_parameter1 = 9 parameter1 = 11 END
+	  LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 0 match_target = 1 match_timing = 2 match_parameter2 = 0 match_parameter1 = 8 parameter1 = 10 END
+	  LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 0 match_target = 1 match_timing = 2 match_parameter2 = 0 match_parameter1 = 7 parameter1 = 9 END
+	  LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 0 match_target = 1 match_timing = 2 match_parameter2 = 0 match_parameter1 = 6 parameter1 = 8 END
+	  LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 0 match_target = 1 match_timing = 2 match_parameter2 = 0 match_parameter1 = 5 parameter1 = 7 END
+	  LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 0 match_target = 1 match_timing = 2 match_parameter2 = 0 match_parameter1 = 4 parameter1 = 6 END
+	  LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 0 match_target = 1 match_timing = 2 match_parameter2 = 0 match_parameter1 = 3 parameter1 = 5 END
+	  LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 0 match_target = 1 match_timing = 2 match_parameter2 = 0 match_parameter1 = 2 parameter1 = 4 END
+	  LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 0 match_target = 1 match_timing = 2 match_parameter2 = 0 match_parameter1 = 1 parameter1 = 3 END
+	  
+      PATCH_FOR_EACH offset IN 0x50 0x54 BEGIN
+			TEXT_SPRINT armor_class_desc ~Armor Class: ~
+        READ_STRREF ~%offset%~ desc
+        PATCH_IF ("%desc%" STRING_COMPARE_REGEXP ~<Invalid Strref -?[0-9]+>~) BEGIN // checking for valid content in string
+          INNER_PATCH_SAVE new_desc ~%desc%~ BEGIN
+            REPLACE_TEXTUALLY EXACT_MATCH ~%armor_class_desc%+1~ ~%armor_class_desc%[AC_BONUS]+3~
+            REPLACE_TEXTUALLY EXACT_MATCH ~%armor_class_desc%+2~ ~%armor_class_desc%[AC_BONUS]+4~
+            REPLACE_TEXTUALLY EXACT_MATCH ~%armor_class_desc%+3~ ~%armor_class_desc%[AC_BONUS]+5~
+            REPLACE_TEXTUALLY EXACT_MATCH ~%armor_class_desc%+4~ ~%armor_class_desc%[AC_BONUS]+6~
+            REPLACE_TEXTUALLY EXACT_MATCH ~%armor_class_desc%+5~ ~%armor_class_desc%[AC_BONUS]+7~
+            REPLACE_TEXTUALLY EXACT_MATCH ~%armor_class_desc%+6~ ~%armor_class_desc%[AC_BONUS]+8~
+            REPLACE_TEXTUALLY EXACT_MATCH ~%armor_class_desc%+7~ ~%armor_class_desc%[AC_BONUS]+9~
+            REPLACE_TEXTUALLY EXACT_MATCH ~%armor_class_desc%+8~ ~%armor_class_desc%[AC_BONUS]+10~
+            REPLACE_TEXTUALLY EXACT_MATCH ~%armor_class_desc%+9~ ~%armor_class_desc%[AC_BONUS]+11~
+		  END
+			SAY_EVALUATED ~%offset%~ ~%new_desc%~
+		  END
+		  END
+
+	  END
+      PATCH_IF (type = 12) AND ((appearance = 12867) OR (appearance = 13380)) BEGIN // if it is a large shield in appearance
+        WRITE_BYTE    0x1E (row1 BOR 0b10000000)
+        WRITE_BYTE    0x19 (row2 BOR 0b00000111)
+        WRITE_BYTE    0x20 (row3 BOR 0b00110000)
+
+	  LPF ADD_ITEM_EQEFFECT INT_VAR opcode = 54 target = 1 timing = 2 parameter2 = 0 parameter1 = %-2% STR_VAR resource = C0_HT_A3 END
+	  LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 0 match_target = 1 match_timing = 2 match_parameter2 = 0 match_parameter1 = 9 parameter1 = 13 END
+	  LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 0 match_target = 1 match_timing = 2 match_parameter2 = 0 match_parameter1 = 8 parameter1 = 12 END
+	  LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 0 match_target = 1 match_timing = 2 match_parameter2 = 0 match_parameter1 = 7 parameter1 = 11 END
+	  LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 0 match_target = 1 match_timing = 2 match_parameter2 = 0 match_parameter1 = 6 parameter1 = 10 END
+	  LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 0 match_target = 1 match_timing = 2 match_parameter2 = 0 match_parameter1 = 5 parameter1 = 9 END
+	  LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 0 match_target = 1 match_timing = 2 match_parameter2 = 0 match_parameter1 = 4 parameter1 = 8 END
+	  LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 0 match_target = 1 match_timing = 2 match_parameter2 = 0 match_parameter1 = 3 parameter1 = 7 END
+	  LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 0 match_target = 1 match_timing = 2 match_parameter2 = 0 match_parameter1 = 2 parameter1 = 6 END
+	  LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 0 match_target = 1 match_timing = 2 match_parameter2 = 0 match_parameter1 = 1 parameter1 = 5 END
+
+      PATCH_FOR_EACH offset IN 0x50 0x54 BEGIN
+			TEXT_SPRINT equipped_abilities ~Equipped abilities:~
+			TEXT_SPRINT thac0_penalty_desc ~– THAC0: -2 penalty~
+			TEXT_SPRINT armor_class_desc ~Armor Class: ~
+        READ_STRREF ~%offset%~ desc
+        PATCH_IF ("%desc%" STRING_COMPARE_REGEXP ~<Invalid Strref -?[0-9]+>~) BEGIN // checking for valid content in string
+          INNER_PATCH_SAVE new_desc ~%desc%~ BEGIN
+            REPLACE_TEXTUALLY EXACT_MATCH ~%armor_class_desc%+1~ ~%armor_class_desc%[AC_BONUS]+5~
+            REPLACE_TEXTUALLY EXACT_MATCH ~%armor_class_desc%+2~ ~%armor_class_desc%[AC_BONUS]+6~
+            REPLACE_TEXTUALLY EXACT_MATCH ~%armor_class_desc%+3~ ~%armor_class_desc%[AC_BONUS]+7~
+            REPLACE_TEXTUALLY EXACT_MATCH ~%armor_class_desc%+4~ ~%armor_class_desc%[AC_BONUS]+8~
+            REPLACE_TEXTUALLY EXACT_MATCH ~%armor_class_desc%+5~ ~%armor_class_desc%[AC_BONUS]+9~
+            REPLACE_TEXTUALLY EXACT_MATCH ~%armor_class_desc%+6~ ~%armor_class_desc%[AC_BONUS]+10~
+            REPLACE_TEXTUALLY EXACT_MATCH ~%armor_class_desc%+7~ ~%armor_class_desc%[AC_BONUS]+11~
+            REPLACE_TEXTUALLY EXACT_MATCH ~%armor_class_desc%+8~ ~%armor_class_desc%[AC_BONUS]+12~
+            REPLACE_TEXTUALLY EXACT_MATCH ~%armor_class_desc%+9~ ~%armor_class_desc%[AC_BONUS]+13~
+            REPLACE_TEXTUALLY ~%equipped_abilities%~ ~%equipped_abilities%
+%thac0_penalty_desc%~
+		  END
+			SAY_EVALUATED ~%offset%~ ~%new_desc%~
+		  END
+		  END
+
+	  END
+      END
+BUT_ONLY_IF_IT_CHANGES
