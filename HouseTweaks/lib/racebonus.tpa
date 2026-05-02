@@ -70,9 +70,9 @@ COPY ~%MOD_FOLDER%/2DA/RACETHAC.2DA~ ~OVERRIDE~
 	END
       BUT_ONLY
 	  
-COPY_EXISTING ~CHARBASE.CRE~ ~OVERRIDE/CHARBASE1.CRE~
+COPY_EXISTING ~CHARBASE.CRE~ ~OVERRIDE/c0_charbase_temporary.cre~
 
-COPY_EXISTING ~CHARBASE1.CRE~ ~OVERRIDE~
+COPY_EXISTING ~c0_charbase_temporary.cre~ ~OVERRIDE~
    LPF ADD_CRE_EFFECT INT_VAR opcode = 326 power = 100 parameter1 = (IDS_OF_SYMBOL (~RACE~ ~HUMAN~)) parameter2 = 104 target = 1 timing = 4 duration = 1 STR_VAR resource = C0RACHUM END
    LPF ADD_CRE_EFFECT INT_VAR opcode = 326 power = 100 parameter1 = (IDS_OF_SYMBOL (~RACE~ ~ELF~)) parameter2 = 104 target = 1 timing = 4 duration = 1 STR_VAR resource = C0RACELF END
    LPF ADD_CRE_EFFECT INT_VAR opcode = 326 power = 100 parameter1 = (IDS_OF_SYMBOL (~RACE~ ~HALF_ELF~)) parameter2 = 104 target = 1 timing = 4 duration = 1 STR_VAR resource = C0RACHEL END
@@ -81,5 +81,5 @@ COPY_EXISTING ~CHARBASE1.CRE~ ~OVERRIDE~
    LPF ADD_CRE_EFFECT INT_VAR opcode = 326 power = 100 parameter1 = (IDS_OF_SYMBOL (~RACE~ ~HALFLING~)) parameter2 = 104 target = 1 timing = 4 duration = 1 STR_VAR resource = C0RACHFL END
    LPF ADD_CRE_EFFECT INT_VAR opcode = 326 power = 100 parameter1 = (IDS_OF_SYMBOL (~RACE~ ~HALFORC~)) parameter2 = 104 target = 1 timing = 4 duration = 1 STR_VAR resource = C0RACHOR END
 
-COPY_EXISTING ~CHARBASE1.CRE~ ~HOUSETWEAKS/TEMP/CHARBASE.CRE~
-COPY_EXISTING ~HOUSETWEAKS/TEMP~ ~OVERRIDE~
+COPY_EXISTING ~c0_charbase_temporary.cre~ ~override/%MOD_FOLDER%/temp/CHARBASE.CRE~
+COPY_EXISTING ~%MOD_FOLDER%/temp~ ~OVERRIDE~

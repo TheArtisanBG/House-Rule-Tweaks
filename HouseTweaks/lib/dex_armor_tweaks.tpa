@@ -10,9 +10,22 @@ COPY_EXISTING ~DEXMOD.2da~ ~override~
   END
   PRETTY_PRINT_2DA
   BUT_ONLY
-
+  
 ACTION_IF NOT FILE_EXISTS_IN_GAME ~C0PASSEF.SPL~ THEN BEGIN
 COPY ~%MOD_FOLDER%/spells/passive~ ~OVERRIDE~
+END
+
+ACTION_IF NOT FILE_EXISTS_IN_GAME ~C0PSEFCK.ITM~ THEN BEGIN
+ACTION_IF FILE_EXISTS_IN_GAME ~baldur.bcs~ THEN BEGIN
+EXTEND_TOP ~baldur.bcs~ ~%MOD_FOLDER%/scripts/passive_effects.baf~ EVAL
+END
+ACTION_IF FILE_EXISTS_IN_GAME ~bdbaldur.bcs~ THEN BEGIN
+EXTEND_TOP ~bdbaldur.bcs~ ~%MOD_FOLDER%/scripts/passive_effects.baf~ EVAL
+END
+ACTION_IF FILE_EXISTS_IN_GAME ~baldur25.bcs~ THEN BEGIN
+EXTEND_TOP ~baldur25.bcs~ ~%MOD_FOLDER%/scripts/passive_effects.baf~ EVAL
+END
+COPY_EXISTING ~SW1H01.ITM~ ~OVERRIDE/C0PSEFCK.ITM~
 END
 
 COPY_EXISTING ~C0PASSEF.SPL~ ~OVERRIDE~
@@ -27,14 +40,17 @@ LPF ADD_SPELL_EFFECT INT_VAR opcode = 326 power = 100 parameter1 = 6 parameter2 
 LPF ADD_SPELL_EFFECT INT_VAR opcode = 326 power = 100 parameter1 = 7 parameter2 = 123 target = 2 timing = 1 STR_VAR resource = C0HTD_06 END
 LPF ADD_SPELL_EFFECT INT_VAR opcode = 326 power = 100 parameter1 = 8 parameter2 = 123 target = 2 timing = 1 STR_VAR resource = C0HTD_07 END
 LPF ADD_SPELL_EFFECT INT_VAR opcode = 326 power = 100 parameter1 = 9 parameter2 = 123 target = 2 timing = 1 STR_VAR resource = C0HTD_08 END
-LPF ADD_SPELL_EFFECT INT_VAR opcode = 326 power = 100 parameter1 = 10 parameter2 = 123 target = 2 timing = 1 STR_VAR resource = C0HTD_09 END
-LPF ADD_SPELL_EFFECT INT_VAR opcode = 326 power = 100 parameter1 = 12 parameter2 = 122 target = 2 timing = 1 STR_VAR resource = C0HTD_12 END
 LPF ADD_SPELL_EFFECT INT_VAR opcode = 326 power = 100 parameter1 = 14 parameter2 = 122 target = 2 timing = 1 STR_VAR resource = C0HTD_14 END
+LPF ADD_SPELL_EFFECT INT_VAR opcode = 326 power = 100 parameter1 = 15 parameter2 = 122 target = 2 timing = 1 STR_VAR resource = C0HTD_15 END
 LPF ADD_SPELL_EFFECT INT_VAR opcode = 326 power = 100 parameter1 = 16 parameter2 = 122 target = 2 timing = 1 STR_VAR resource = C0HTD_16 END
+LPF ADD_SPELL_EFFECT INT_VAR opcode = 326 power = 100 parameter1 = 17 parameter2 = 122 target = 2 timing = 1 STR_VAR resource = C0HTD_17 END
 LPF ADD_SPELL_EFFECT INT_VAR opcode = 326 power = 100 parameter1 = 18 parameter2 = 122 target = 2 timing = 1 STR_VAR resource = C0HTD_18 END
 LPF ADD_SPELL_EFFECT INT_VAR opcode = 326 power = 100 parameter1 = 19 parameter2 = 122 target = 2 timing = 1 STR_VAR resource = C0HTD_19 END
+LPF ADD_SPELL_EFFECT INT_VAR opcode = 326 power = 100 parameter1 = 20 parameter2 = 122 target = 2 timing = 1 STR_VAR resource = C0HTD_20 END
 LPF ADD_SPELL_EFFECT INT_VAR opcode = 326 power = 100 parameter1 = 21 parameter2 = 122 target = 2 timing = 1 STR_VAR resource = C0HTD_21 END
+LPF ADD_SPELL_EFFECT INT_VAR opcode = 326 power = 100 parameter1 = 22 parameter2 = 122 target = 2 timing = 1 STR_VAR resource = C0HTD_22 END
 LPF ADD_SPELL_EFFECT INT_VAR opcode = 326 power = 100 parameter1 = 23 parameter2 = 122 target = 2 timing = 1 STR_VAR resource = C0HTD_23 END
+LPF ADD_SPELL_EFFECT INT_VAR opcode = 326 power = 100 parameter1 = 24 parameter2 = 122 target = 2 timing = 1 STR_VAR resource = C0HTD_24 END
 LPF ADD_SPELL_EFFECT INT_VAR opcode = 326 power = 100 parameter1 = 25 parameter2 = 122 target = 2 timing = 1 STR_VAR resource = C0HTD_25 END
 
 COPY_EXISTING ~C0HTD_01.SPL~ ~OVERRIDE/C0HTD_02.SPL~
@@ -53,8 +69,11 @@ COPY_EXISTING ~C0HTD_12.SPL~ ~OVERRIDE/C0HTD_16.SPL~
 COPY_EXISTING ~C0HTD_12.SPL~ ~OVERRIDE/C0HTD_17.SPL~
 COPY_EXISTING ~C0HTD_12.SPL~ ~OVERRIDE/C0HTD_18.SPL~
 COPY_EXISTING ~C0HTD_12.SPL~ ~OVERRIDE/C0HTD_19.SPL~
+COPY_EXISTING ~C0HTD_12.SPL~ ~OVERRIDE/C0HTD_20.SPL~
 COPY_EXISTING ~C0HTD_12.SPL~ ~OVERRIDE/C0HTD_21.SPL~
+COPY_EXISTING ~C0HTD_12.SPL~ ~OVERRIDE/C0HTD_22.SPL~
 COPY_EXISTING ~C0HTD_12.SPL~ ~OVERRIDE/C0HTD_23.SPL~
+COPY_EXISTING ~C0HTD_12.SPL~ ~OVERRIDE/C0HTD_24.SPL~
 COPY_EXISTING ~C0HTD_12.SPL~ ~OVERRIDE/C0HTD_25.SPL~
 
 ACTION_IF FILE_EXISTS_IN_GAME ~C0FS#00.SPL~ THEN BEGIN
@@ -80,21 +99,26 @@ COPY_EXISTING_REGEXP GLOB ~.*\.itm~ ~override~ //copies all item files
       READ_BYTE    0x20 thief_usability //reads the byte containing the thief usability flag
       READ_BYTE    0x21 row4_usability //reads the byte containing the thief usability flag
       READ_BYTE    0x29 druid_usability //reads the byte containing the druid usability flag
+      PATCH_IF (type = 2) BEGIN // if it is studded leather armor
+		LPF ADD_ITEM_EQEFFECT INT_VAR silent = 1 target = 1 opcode = 326 timing = 1 STR_VAR resource = C0HTD_D1 END
+		END
 
       PATCH_IF ((type = 2) AND (appearance = 16690) AND ((druid_usability BAND 0b00100000) = 0b00100000)) BEGIN // if it is studded leather armor
 		LPF ADD_ITEM_EQEFFECT INT_VAR silent = 1 target = 1 opcode = 318 timing = 2 STR_VAR resource = C0HTD_25 END
+		LPF ADD_ITEM_EQEFFECT INT_VAR silent = 1 target = 1 opcode = 318 timing = 2 STR_VAR resource = C0HTD_24 END
 		LPF ADD_ITEM_EQEFFECT INT_VAR silent = 1 target = 1 opcode = 318 timing = 2 STR_VAR resource = C0HTD_23 END
-		LPF ADD_ITEM_EQEFFECT INT_VAR silent = 1 target = 1 opcode = 318 timing = 2 STR_VAR resource = C0HTD_21 END
+		LPF ADD_ITEM_EQEFFECT INT_VAR silent = 1 target = 1 opcode = 318 timing = 2 STR_VAR resource = C0HTD_22 END
 		LPF ADD_ITEM_EQEFFECT INT_VAR silent = 1 target = 1 opcode = 321 timing = 1 STR_VAR resource = C0HTD_25 END
+		LPF ADD_ITEM_EQEFFECT INT_VAR silent = 1 target = 1 opcode = 321 timing = 1 STR_VAR resource = C0HTD_24 END
 		LPF ADD_ITEM_EQEFFECT INT_VAR silent = 1 target = 1 opcode = 321 timing = 1 STR_VAR resource = C0HTD_23 END
-		LPF ADD_ITEM_EQEFFECT INT_VAR silent = 1 target = 1 opcode = 321 timing = 1 STR_VAR resource = C0HTD_21 END
+		LPF ADD_ITEM_EQEFFECT INT_VAR silent = 1 target = 1 opcode = 321 timing = 1 STR_VAR resource = C0HTD_22 END
 		
 	  INNER_ACTION BEGIN
 	  PRINT ~%SOURCE_RES% is studded leather armor.~
 	  END
       PATCH_FOR_EACH offset IN 0x50 0x54 BEGIN
 			SPRINT armor_class_desc ~Armor Class: ~
-			SPRINT max_dex_modifier_stud ~Maximum Dexterity AC Modifier: 7~
+			SPRINT max_dex_modifier_stud ~Maximum Dexterity AC Modifier: 8~
         READ_STRREF ~%offset%~ desc
         PATCH_IF ("%desc%" STRING_COMPARE_REGEXP ~<Invalid Strref -?[0-9]+>~) BEGIN // checking for valid content in string
           INNER_PATCH_SAVE new_desc ~%desc%~ BEGIN
@@ -110,11 +134,17 @@ COPY_EXISTING_REGEXP GLOB ~.*\.itm~ ~override~ //copies all item files
 			
 	  PATCH_IF ((type = 2) AND (appearance = 16691) AND ((bard_usability BAND 0b01000000) = 0b00000000) AND ((thief_usability BAND 0b01000000) = 0b01000000)) BEGIN // if it is chain mail
 		LPF ADD_ITEM_EQEFFECT INT_VAR silent = 1 target = 1 opcode = 318 timing = 2 STR_VAR resource = C0HTD_25 END
+		LPF ADD_ITEM_EQEFFECT INT_VAR silent = 1 target = 1 opcode = 318 timing = 2 STR_VAR resource = C0HTD_24 END
 		LPF ADD_ITEM_EQEFFECT INT_VAR silent = 1 target = 1 opcode = 318 timing = 2 STR_VAR resource = C0HTD_23 END
+		LPF ADD_ITEM_EQEFFECT INT_VAR silent = 1 target = 1 opcode = 318 timing = 2 STR_VAR resource = C0HTD_22 END
 		LPF ADD_ITEM_EQEFFECT INT_VAR silent = 1 target = 1 opcode = 318 timing = 2 STR_VAR resource = C0HTD_21 END
+		LPF ADD_ITEM_EQEFFECT INT_VAR silent = 1 target = 1 opcode = 318 timing = 2 STR_VAR resource = C0HTD_20 END
 		LPF ADD_ITEM_EQEFFECT INT_VAR silent = 1 target = 1 opcode = 321 timing = 1 STR_VAR resource = C0HTD_25 END
+		LPF ADD_ITEM_EQEFFECT INT_VAR silent = 1 target = 1 opcode = 321 timing = 1 STR_VAR resource = C0HTD_24 END
 		LPF ADD_ITEM_EQEFFECT INT_VAR silent = 1 target = 1 opcode = 321 timing = 1 STR_VAR resource = C0HTD_23 END
+		LPF ADD_ITEM_EQEFFECT INT_VAR silent = 1 target = 1 opcode = 321 timing = 1 STR_VAR resource = C0HTD_22 END
 		LPF ADD_ITEM_EQEFFECT INT_VAR silent = 1 target = 1 opcode = 321 timing = 1 STR_VAR resource = C0HTD_21 END
+		LPF ADD_ITEM_EQEFFECT INT_VAR silent = 1 target = 1 opcode = 321 timing = 1 STR_VAR resource = C0HTD_20 END
 
 	  INNER_ACTION BEGIN
 	  PRINT ~%SOURCE_RES% is chain mail.~
@@ -122,7 +152,7 @@ COPY_EXISTING_REGEXP GLOB ~.*\.itm~ ~override~ //copies all item files
 
       PATCH_FOR_EACH offset IN 0x50 0x54 BEGIN
 			SPRINT armor_class_desc ~Armor Class: ~
-			SPRINT max_dex_modifier_chain ~Maximum Dexterity AC Modifier: 5~
+			SPRINT max_dex_modifier_chain ~Maximum Dexterity AC Modifier: 6~
         READ_STRREF ~%offset%~ desc
         PATCH_IF ("%desc%" STRING_COMPARE_REGEXP ~<Invalid Strref -?[0-9]+>~) BEGIN // checking for valid content in string
           INNER_PATCH_SAVE new_desc ~%desc%~ BEGIN
@@ -137,16 +167,22 @@ COPY_EXISTING_REGEXP GLOB ~.*\.itm~ ~override~ //copies all item files
 
       PATCH_IF ((type = 2) AND (appearance = 16691) AND ((bard_usability BAND 0b01000000) = 0b00000000) AND ((thief_usability BAND 0b01000000) = 0b00000000)) BEGIN // if it is elven chain mail
 		LPF ADD_ITEM_EQEFFECT INT_VAR silent = 1 target = 1 opcode = 318 timing = 2 STR_VAR resource = C0HTD_25 END
+		LPF ADD_ITEM_EQEFFECT INT_VAR silent = 1 target = 1 opcode = 318 timing = 2 STR_VAR resource = C0HTD_24 END
 		LPF ADD_ITEM_EQEFFECT INT_VAR silent = 1 target = 1 opcode = 318 timing = 2 STR_VAR resource = C0HTD_23 END
+		LPF ADD_ITEM_EQEFFECT INT_VAR silent = 1 target = 1 opcode = 318 timing = 2 STR_VAR resource = C0HTD_22 END
+		LPF ADD_ITEM_EQEFFECT INT_VAR silent = 1 target = 1 opcode = 318 timing = 2 STR_VAR resource = C0HTD_21 END
 		LPF ADD_ITEM_EQEFFECT INT_VAR silent = 1 target = 1 opcode = 321 timing = 1 STR_VAR resource = C0HTD_25 END
+		LPF ADD_ITEM_EQEFFECT INT_VAR silent = 1 target = 1 opcode = 321 timing = 1 STR_VAR resource = C0HTD_24 END
 		LPF ADD_ITEM_EQEFFECT INT_VAR silent = 1 target = 1 opcode = 321 timing = 1 STR_VAR resource = C0HTD_23 END
+		LPF ADD_ITEM_EQEFFECT INT_VAR silent = 1 target = 1 opcode = 321 timing = 1 STR_VAR resource = C0HTD_22 END
+		LPF ADD_ITEM_EQEFFECT INT_VAR silent = 1 target = 1 opcode = 321 timing = 1 STR_VAR resource = C0HTD_21 END
 		
 	  INNER_ACTION BEGIN
 	  PRINT ~%SOURCE_RES% is elven chain mail.~
 	  END
       PATCH_FOR_EACH offset IN 0x50 0x54 BEGIN
 			SPRINT armor_class_desc ~Armor Class: ~
-			SPRINT max_dex_modifier_elven ~Maximum Dexterity AC Modifier: 6~
+			SPRINT max_dex_modifier_elven ~Maximum Dexterity AC Modifier: 7~
         READ_STRREF ~%offset%~ desc
         PATCH_IF ("%desc%" STRING_COMPARE_REGEXP ~<Invalid Strref -?[0-9]+>~) BEGIN // checking for valid content in string
           INNER_PATCH_SAVE new_desc ~%desc%~ BEGIN
@@ -161,15 +197,19 @@ COPY_EXISTING_REGEXP GLOB ~.*\.itm~ ~override~ //copies all item files
 
       PATCH_IF ((type = 2) AND (appearance = 16691) AND ((bard_usability BAND 0b01000000) = 0b01000000)) BEGIN // if it is splint mail
 		LPF ADD_ITEM_EQEFFECT INT_VAR silent = 1 target = 1 opcode = 318 timing = 2 STR_VAR resource = C0HTD_25 END
+		LPF ADD_ITEM_EQEFFECT INT_VAR silent = 1 target = 1 opcode = 318 timing = 2 STR_VAR resource = C0HTD_24 END
 		LPF ADD_ITEM_EQEFFECT INT_VAR silent = 1 target = 1 opcode = 318 timing = 2 STR_VAR resource = C0HTD_23 END
+		LPF ADD_ITEM_EQEFFECT INT_VAR silent = 1 target = 1 opcode = 318 timing = 2 STR_VAR resource = C0HTD_22 END
 		LPF ADD_ITEM_EQEFFECT INT_VAR silent = 1 target = 1 opcode = 318 timing = 2 STR_VAR resource = C0HTD_21 END
+		LPF ADD_ITEM_EQEFFECT INT_VAR silent = 1 target = 1 opcode = 318 timing = 2 STR_VAR resource = C0HTD_20 END
 		LPF ADD_ITEM_EQEFFECT INT_VAR silent = 1 target = 1 opcode = 318 timing = 2 STR_VAR resource = C0HTD_19 END
-		LPF ADD_ITEM_EQEFFECT INT_VAR silent = 1 target = 1 opcode = 318 timing = 2 STR_VAR resource = C0HTD_18 END
 		LPF ADD_ITEM_EQEFFECT INT_VAR silent = 1 target = 1 opcode = 321 timing = 1 STR_VAR resource = C0HTD_25 END
+		LPF ADD_ITEM_EQEFFECT INT_VAR silent = 1 target = 1 opcode = 321 timing = 1 STR_VAR resource = C0HTD_24 END
 		LPF ADD_ITEM_EQEFFECT INT_VAR silent = 1 target = 1 opcode = 321 timing = 1 STR_VAR resource = C0HTD_23 END
+		LPF ADD_ITEM_EQEFFECT INT_VAR silent = 1 target = 1 opcode = 321 timing = 1 STR_VAR resource = C0HTD_22 END
 		LPF ADD_ITEM_EQEFFECT INT_VAR silent = 1 target = 1 opcode = 321 timing = 1 STR_VAR resource = C0HTD_21 END
+		LPF ADD_ITEM_EQEFFECT INT_VAR silent = 1 target = 1 opcode = 321 timing = 1 STR_VAR resource = C0HTD_20 END
 		LPF ADD_ITEM_EQEFFECT INT_VAR silent = 1 target = 1 opcode = 321 timing = 1 STR_VAR resource = C0HTD_19 END
-		LPF ADD_ITEM_EQEFFECT INT_VAR silent = 1 target = 1 opcode = 321 timing = 1 STR_VAR resource = C0HTD_18 END
 		
 	  INNER_ACTION BEGIN
 	  PRINT ~%SOURCE_RES% is splint mail.~
@@ -177,7 +217,7 @@ COPY_EXISTING_REGEXP GLOB ~.*\.itm~ ~override~ //copies all item files
 	  
       PATCH_FOR_EACH offset IN 0x50 0x54 BEGIN
 			SPRINT armor_class_desc ~Armor Class: ~
-			SPRINT max_dex_modifier_splint ~Maximum Dexterity AC Modifier: 4~
+			SPRINT max_dex_modifier_splint ~Maximum Dexterity AC Modifier: 5~
         READ_STRREF ~%offset%~ desc
         PATCH_IF ("%desc%" STRING_COMPARE_REGEXP ~<Invalid Strref -?[0-9]+>~) BEGIN // checking for valid content in string
           INNER_PATCH_SAVE new_desc ~%desc%~ BEGIN
@@ -192,21 +232,25 @@ COPY_EXISTING_REGEXP GLOB ~.*\.itm~ ~override~ //copies all item files
 
       PATCH_IF ((type = 2) AND (appearance = 16692)) BEGIN // if it is plate mail
 		LPF ADD_ITEM_EQEFFECT INT_VAR silent = 1 target = 1 opcode = 318 timing = 2 STR_VAR resource = C0HTD_25 END
+		LPF ADD_ITEM_EQEFFECT INT_VAR silent = 1 target = 1 opcode = 318 timing = 2 STR_VAR resource = C0HTD_24 END
 		LPF ADD_ITEM_EQEFFECT INT_VAR silent = 1 target = 1 opcode = 318 timing = 2 STR_VAR resource = C0HTD_23 END
+		LPF ADD_ITEM_EQEFFECT INT_VAR silent = 1 target = 1 opcode = 318 timing = 2 STR_VAR resource = C0HTD_22 END
 		LPF ADD_ITEM_EQEFFECT INT_VAR silent = 1 target = 1 opcode = 318 timing = 2 STR_VAR resource = C0HTD_21 END
+		LPF ADD_ITEM_EQEFFECT INT_VAR silent = 1 target = 1 opcode = 318 timing = 2 STR_VAR resource = C0HTD_20 END
 		LPF ADD_ITEM_EQEFFECT INT_VAR silent = 1 target = 1 opcode = 318 timing = 2 STR_VAR resource = C0HTD_19 END
 		LPF ADD_ITEM_EQEFFECT INT_VAR silent = 1 target = 1 opcode = 318 timing = 2 STR_VAR resource = C0HTD_18 END
 		LPF ADD_ITEM_EQEFFECT INT_VAR silent = 1 target = 1 opcode = 318 timing = 2 STR_VAR resource = C0HTD_17 END
 		LPF ADD_ITEM_EQEFFECT INT_VAR silent = 1 target = 1 opcode = 318 timing = 2 STR_VAR resource = C0HTD_16 END
-		LPF ADD_ITEM_EQEFFECT INT_VAR silent = 1 target = 1 opcode = 318 timing = 2 STR_VAR resource = C0HTD_15 END
 		LPF ADD_ITEM_EQEFFECT INT_VAR silent = 1 target = 1 opcode = 321 timing = 1 STR_VAR resource = C0HTD_25 END
+		LPF ADD_ITEM_EQEFFECT INT_VAR silent = 1 target = 1 opcode = 321 timing = 1 STR_VAR resource = C0HTD_24 END
 		LPF ADD_ITEM_EQEFFECT INT_VAR silent = 1 target = 1 opcode = 321 timing = 1 STR_VAR resource = C0HTD_23 END
+		LPF ADD_ITEM_EQEFFECT INT_VAR silent = 1 target = 1 opcode = 321 timing = 1 STR_VAR resource = C0HTD_22 END
 		LPF ADD_ITEM_EQEFFECT INT_VAR silent = 1 target = 1 opcode = 321 timing = 1 STR_VAR resource = C0HTD_21 END
+		LPF ADD_ITEM_EQEFFECT INT_VAR silent = 1 target = 1 opcode = 321 timing = 1 STR_VAR resource = C0HTD_20 END
 		LPF ADD_ITEM_EQEFFECT INT_VAR silent = 1 target = 1 opcode = 321 timing = 1 STR_VAR resource = C0HTD_19 END
 		LPF ADD_ITEM_EQEFFECT INT_VAR silent = 1 target = 1 opcode = 321 timing = 1 STR_VAR resource = C0HTD_18 END
 		LPF ADD_ITEM_EQEFFECT INT_VAR silent = 1 target = 1 opcode = 321 timing = 1 STR_VAR resource = C0HTD_17 END
 		LPF ADD_ITEM_EQEFFECT INT_VAR silent = 1 target = 1 opcode = 321 timing = 1 STR_VAR resource = C0HTD_16 END
-		LPF ADD_ITEM_EQEFFECT INT_VAR silent = 1 target = 1 opcode = 321 timing = 1 STR_VAR resource = C0HTD_15 END
 
 	  INNER_ACTION BEGIN
 	  PRINT ~%SOURCE_RES% is plate mail.~
@@ -232,8 +276,8 @@ END
 				READ_SHORT ef_off+i*0x30 opcode
 				READ_LONG ef_off+i*0x30+8 effect
 				PATCH_IF ((opcode = 0) AND (effect = 4)) BEGIN
-					LPF ADD_ITEM_EQEFFECT INT_VAR silent = 1 target = 1 opcode = 318 timing = 2 STR_VAR resource = C0HTD_14 END
-					LPF ADD_ITEM_EQEFFECT INT_VAR silent = 1 target = 1 opcode = 321 timing = 1 STR_VAR resource = C0HTD_14 END
+					LPF ADD_ITEM_EQEFFECT INT_VAR silent = 1 target = 1 opcode = 318 timing = 2 STR_VAR resource = C0HTD_15 END
+					LPF ADD_ITEM_EQEFFECT INT_VAR silent = 1 target = 1 opcode = 321 timing = 1 STR_VAR resource = C0HTD_15 END
 					
     				  PATCH_FOR_EACH offset IN 0x50 0x54 BEGIN
 							SPRINT max_dex_modifier_plate ~Maximum Dexterity AC Modifier: 2~
@@ -269,7 +313,6 @@ END
 						SET non_metal_armor = 1
 				END
 				PATCH_IF (type = 2) AND (appearance = 16692) AND (((row4_usability BAND 0b01000000) = 0b00000000) OR ((druid_usability BAND 0b01000000) = 0b00000000)) AND (non_metal_armor = 1) BEGIN
-						LPF DELETE_EFFECT STR_VAR match_resource = C0HTD_12 END
 						LPF DELETE_EFFECT STR_VAR match_resource = C0HTD_14 END
 						LPF DELETE_EFFECT STR_VAR match_resource = C0HTD_15 END
 						LPF DELETE_EFFECT STR_VAR match_resource = C0HTD_16 END
@@ -326,6 +369,15 @@ COPY_EXISTING_REGEXP GLOB ~.*\.itm~ ~override~ //copies all item files
 	  LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 0 match_target = 1 match_timing = 2 match_parameter2 = 0 match_parameter1 = 3 parameter1 = 4 END
 	  LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 0 match_target = 1 match_timing = 2 match_parameter2 = 0 match_parameter1 = 2 parameter1 = 3 END
 	  LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 0 match_target = 1 match_timing = 2 match_parameter2 = 0 match_parameter1 = 1 parameter1 = 2 END
+	  LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 0 match_target = 1 match_timing = 2 match_parameter2 = 2 match_parameter1 = %-9% parameter1 = %-10% END
+	  LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 0 match_target = 1 match_timing = 2 match_parameter2 = 2 match_parameter1 = %-8% parameter1 = %-9% END
+	  LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 0 match_target = 1 match_timing = 2 match_parameter2 = 2 match_parameter1 = %-7% parameter1 = %-8% END
+	  LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 0 match_target = 1 match_timing = 2 match_parameter2 = 2 match_parameter1 = %-6% parameter1 = %-7% END
+	  LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 0 match_target = 1 match_timing = 2 match_parameter2 = 2 match_parameter1 = %-5% parameter1 = %-6% END
+	  LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 0 match_target = 1 match_timing = 2 match_parameter2 = 2 match_parameter1 = %-4% parameter1 = %-5% END
+	  LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 0 match_target = 1 match_timing = 2 match_parameter2 = 2 match_parameter1 = %-3% parameter1 = %-4% END
+	  LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 0 match_target = 1 match_timing = 2 match_parameter2 = 2 match_parameter1 = %-2% parameter1 = %-3% END
+	  LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 0 match_target = 1 match_timing = 2 match_parameter2 = 2 match_parameter1 = %-1% parameter1 = %-2% END
 
       PATCH_FOR_EACH offset IN 0x50 0x54 BEGIN
 			TEXT_SPRINT armor_class_desc ~Armor Class: ~
@@ -347,7 +399,7 @@ COPY_EXISTING_REGEXP GLOB ~.*\.itm~ ~override~ //copies all item files
 		  END
 
 	  END
-      PATCH_IF (type = 12) AND ((appearance = 12611) OR (appearance = 13124) OR (appearance = 13123) OR (appearance = 13635) OR (appearance = 13891) OR (appearance = 14147)) BEGIN // if it is a medium shield in appearance
+      PATCH_IF (type = 12) AND ((appearance = 12611) OR (appearance = 13124) OR (appearance = 13123) OR (appearance = 13635) OR (appearance = 14147)) BEGIN // if it is a medium shield in appearance
 	  LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 0 match_target = 1 match_timing = 2 match_parameter2 = 0 match_parameter1 = 9 parameter1 = 11 END
 	  LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 0 match_target = 1 match_timing = 2 match_parameter2 = 0 match_parameter1 = 8 parameter1 = 10 END
 	  LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 0 match_target = 1 match_timing = 2 match_parameter2 = 0 match_parameter1 = 7 parameter1 = 9 END
@@ -378,7 +430,7 @@ COPY_EXISTING_REGEXP GLOB ~.*\.itm~ ~override~ //copies all item files
 		  END
 
 	  END
-      PATCH_IF (type = 12) AND ((appearance = 12867) OR (appearance = 13380)) BEGIN // if it is a large shield in appearance
+      PATCH_IF (type = 12) AND ((appearance = 12867) OR (appearance = 13380) OR (appearance = 13891)) BEGIN // if it is a large shield in appearance
         WRITE_BYTE    0x1E (row1 BOR 0b10000000)
         WRITE_BYTE    0x19 (row2 BOR 0b00000111)
         WRITE_BYTE    0x20 (row3 BOR 0b00110000)
@@ -420,3 +472,8 @@ COPY_EXISTING_REGEXP GLOB ~.*\.itm~ ~override~ //copies all item files
 	  END
       END
 BUT_ONLY_IF_IT_CHANGES
+
+   COPY_EXISTING_REGEXP GLOB ~^.+\.cre$~ ~override~ 
+   LPF ADD_CRE_EFFECT INT_VAR opcode = 326 target = 1 timing = 1 STR_VAR resource = C0HTD_00 END
+      BUT_ONLY
+	  

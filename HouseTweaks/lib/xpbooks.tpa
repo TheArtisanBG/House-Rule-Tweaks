@@ -29,6 +29,11 @@ LPF ALTER_EFFECT INT_VAR match_opcode = 326 parameter2 = C0_HT_EXPERIENCE_2 matc
 COPY_EXISTING ~C0XPBK1B.SPL~ ~override~
 LPF ALTER_EFFECT INT_VAR match_opcode = 139 parameter1 = RESOLVE_STR_REF (~Target's experience has been raised.~) END
 
+ACTION_IF FILE_EXISTS_IN_GAME ~C0RACHUM.SPL~ THEN BEGIN
+COPY_EXISTING ~C0XPBK1B.SPL~ ~override~
+	LPF ADD_SPELL_EFFECT INT_VAR opcode = 326 target = 1 parameter1 = 1 parameter2 = 104 timing = 1 STR_VAR resource = C0XPBK1E END
+	END
+
 COPY_EXISTING ~C0XPBK1C.SPL~ ~override~
 LPF ALTER_EFFECT INT_VAR match_opcode = 139 parameter1 = RESOLVE_STR_REF (~User's experience is insufficient.~) END
 
