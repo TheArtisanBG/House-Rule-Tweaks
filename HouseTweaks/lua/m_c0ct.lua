@@ -2,8 +2,6 @@ C0_ClericThiefTurnUndeadButton = 0
 function C0_ClericThiefSwitchButtons(config, state)
     if
       state == 15
-      and
-      EEex_Sprite_GetModalState() ~= 4
       then
       EEex_Actionbar_SetButton(4, EEex_Actionbar_ButtonType.THIEVING)
    end
@@ -21,11 +19,12 @@ end
       state == 15
       and
       C0_ClericThiefTurnUndeadButton == 1
+      or
+      EEex_GameObject_GetSelected():getModalState() == 4
       and
       EEex_GameObject_GetSelected():getClass() == 15
       then
       EEex_Actionbar_SetButton(4, EEex_Actionbar_ButtonType.TURN_UNDEAD)
-      EEex_Actionbar_SetButton(11, EEex_Actionbar_ButtonType.SPECIAL_ABILITIES)
 end
    if
       state == 106
