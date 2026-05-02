@@ -29,7 +29,7 @@ INCLUDE ~%MOD_FOLDER%/lib/racebonus.tpa~
 
 BEGIN @4 DESIGNATED 0004
 
-ACTION_IF (FILE_EXISTS_IN_GAME ~EEex_Actionbar.lua~) AND (!FILE_EXISTS_IN_GAME ~C0PR#CL~) BEGIN
+ACTION_IF (MOD_IS_INSTALLED ~EEEX/EEEX.TP2~ ~0~) AND (!FILE_EXISTS_IN_GAME ~C0PR#CL~) BEGIN
 
 INCLUDE ~%MOD_FOLDER%/eeex/profs_eeex.tpa~
 
@@ -392,3 +392,11 @@ ACTION_IF FILE_EXISTS_IN_GAME ~%baldur_script%.bcs~ BEGIN
 EXTEND_TOP ~%baldur_script%.bcs~ ~%MOD_FOLDER%/scripts/travel_rest.baf~
 END
 END
+
+BEGIN ~House Tweaks (EEex): Use Special Ability Button to switch Turn Undead and Thieving Button for Cleric/Thieves~ DESIGNATED 0048
+
+ACTION_IF (MOD_IS_INSTALLED ~EEEX/EEEX.TP2~ ~0~) BEGIN
+
+COPY ~%MOD_FOLDER%/lua/m_c0ct.lua~ ~override~
+
+  END
