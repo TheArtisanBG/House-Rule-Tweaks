@@ -82,4 +82,4 @@ COPY_EXISTING ~c0_charbase_temporary.cre~ ~OVERRIDE~
    LPF ADD_CRE_EFFECT INT_VAR opcode = 326 power = 100 parameter1 = (IDS_OF_SYMBOL (~RACE~ ~HALFORC~)) parameter2 = 104 target = 1 timing = 4 duration = 1 STR_VAR resource = C0RACHOR END
 
 COPY_EXISTING ~c0_charbase_temporary.cre~ ~override/%MOD_FOLDER%/temp/CHARBASE.CRE~
-COPY_EXISTING ~%MOD_FOLDER%/temp~ ~OVERRIDE~
+COPY_EXISTING ~override/%MOD_FOLDER%/temp~ ~OVERRIDE~
