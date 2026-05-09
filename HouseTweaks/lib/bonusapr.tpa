@@ -15,6 +15,9 @@ COPY_EXISTING ~splprot.2da~ ~override~
 COPY_EXISTING ~C0APR__.SPL~ ~OVERRIDE~
 LPF ALTER_EFFECT INT_VAR match_opcode = 326 parameter2 = C0HT_THAC0_LTEQUALS END
 
+COPY_EXISTING ~C0APR_H.SPL~ ~OVERRIDE~
+LPF ALTER_EFFECT INT_VAR match_opcode = 326 parameter2 = C0HT_THAC0_LTEQUALS END
+
 ///////////////////////////////////////////////////////////////////////////
 // Set Abilities for all Fighter Kits                                    //
 // This allows all previously installed fighter kits to receive the      //
@@ -188,3 +191,20 @@ COPY_EXISTING_REGEXP GLOB ~^.+\.spl$~ ~override~
       opcode = 278
    END
       BUT_ONLY
+
+      
+ACTION_IF FILE_EXISTS_IN_GAME ~SPPR412.SPL~ THEN BEGIN
+COPY_EXISTING ~SPPR412.SPL~ ~OVERRIDE~
+LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 278 opcode = 54 END
+LPF CLONE_EFFECT INT_VAR silent = 1 match_opcode = 54 opcode = 318 parameter1 = 0 parameter2 = 0 STR_VAR resource = C0APR_H END
+LPF ADD_SPELL_EFFECT INT_VAR opcode = 326 target = 2 power = 4 parameter1 = 0 parameter2 = 0 STR_VAR resource = C0APR__ END
+LPF ADD_SPELL_EFFECT INT_VAR opcode = 272 target = 2 timing = 9 power = 4 parameter1 = 1 parameter2 = 3 STR_VAR resource = C0APR_H END
+END
+      
+ACTION_IF FILE_EXISTS_IN_GAME ~OHTMPS1.SPL~ THEN BEGIN
+COPY_EXISTING ~OHTMPS1.SPL~ ~OVERRIDE~
+LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 278 opcode = 54 END
+LPF CLONE_EFFECT INT_VAR silent = 1 match_opcode = 54 opcode = 318 parameter1 = 0 parameter2 = 0 STR_VAR resource = C0APR_H END
+LPF ADD_SPELL_EFFECT INT_VAR opcode = 326 target = 2 power = 4 parameter1 = 0 parameter2 = 0 STR_VAR resource = C0APR__ END
+LPF ADD_SPELL_EFFECT INT_VAR opcode = 272 target = 2 timing = 9 power = 4 parameter1 = 1 parameter2 = 3 STR_VAR resource = C0APR_H END
+END
