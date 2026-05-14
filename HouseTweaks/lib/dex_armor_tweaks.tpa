@@ -40,7 +40,6 @@ LPF ADD_SPELL_EFFECT INT_VAR opcode = 326 power = 100 parameter1 = 6 parameter2 
 LPF ADD_SPELL_EFFECT INT_VAR opcode = 326 power = 100 parameter1 = 7 parameter2 = 123 target = 2 timing = 1 STR_VAR resource = C0HTD_06 END
 LPF ADD_SPELL_EFFECT INT_VAR opcode = 326 power = 100 parameter1 = 8 parameter2 = 123 target = 2 timing = 1 STR_VAR resource = C0HTD_07 END
 LPF ADD_SPELL_EFFECT INT_VAR opcode = 326 power = 100 parameter1 = 9 parameter2 = 123 target = 2 timing = 1 STR_VAR resource = C0HTD_08 END
-LPF ADD_SPELL_EFFECT INT_VAR opcode = 326 power = 100 parameter1 = 14 parameter2 = 122 target = 2 timing = 1 STR_VAR resource = C0HTD_14 END
 LPF ADD_SPELL_EFFECT INT_VAR opcode = 326 power = 100 parameter1 = 15 parameter2 = 122 target = 2 timing = 1 STR_VAR resource = C0HTD_15 END
 LPF ADD_SPELL_EFFECT INT_VAR opcode = 326 power = 100 parameter1 = 16 parameter2 = 122 target = 2 timing = 1 STR_VAR resource = C0HTD_16 END
 LPF ADD_SPELL_EFFECT INT_VAR opcode = 326 power = 100 parameter1 = 17 parameter2 = 122 target = 2 timing = 1 STR_VAR resource = C0HTD_17 END
@@ -107,11 +106,9 @@ COPY_EXISTING_REGEXP GLOB ~.*\.itm~ ~override~ //copies all item files
 		LPF ADD_ITEM_EQEFFECT INT_VAR silent = 1 target = 1 opcode = 318 timing = 2 STR_VAR resource = C0HTD_25 END
 		LPF ADD_ITEM_EQEFFECT INT_VAR silent = 1 target = 1 opcode = 318 timing = 2 STR_VAR resource = C0HTD_24 END
 		LPF ADD_ITEM_EQEFFECT INT_VAR silent = 1 target = 1 opcode = 318 timing = 2 STR_VAR resource = C0HTD_23 END
-		LPF ADD_ITEM_EQEFFECT INT_VAR silent = 1 target = 1 opcode = 318 timing = 2 STR_VAR resource = C0HTD_22 END
 		LPF ADD_ITEM_EQEFFECT INT_VAR silent = 1 target = 1 opcode = 321 timing = 1 STR_VAR resource = C0HTD_25 END
 		LPF ADD_ITEM_EQEFFECT INT_VAR silent = 1 target = 1 opcode = 321 timing = 1 STR_VAR resource = C0HTD_24 END
 		LPF ADD_ITEM_EQEFFECT INT_VAR silent = 1 target = 1 opcode = 321 timing = 1 STR_VAR resource = C0HTD_23 END
-		LPF ADD_ITEM_EQEFFECT INT_VAR silent = 1 target = 1 opcode = 321 timing = 1 STR_VAR resource = C0HTD_22 END
 		
 	  INNER_ACTION BEGIN
 	  PRINT ~%SOURCE_RES% is studded leather armor.~
@@ -138,13 +135,11 @@ COPY_EXISTING_REGEXP GLOB ~.*\.itm~ ~override~ //copies all item files
 		LPF ADD_ITEM_EQEFFECT INT_VAR silent = 1 target = 1 opcode = 318 timing = 2 STR_VAR resource = C0HTD_23 END
 		LPF ADD_ITEM_EQEFFECT INT_VAR silent = 1 target = 1 opcode = 318 timing = 2 STR_VAR resource = C0HTD_22 END
 		LPF ADD_ITEM_EQEFFECT INT_VAR silent = 1 target = 1 opcode = 318 timing = 2 STR_VAR resource = C0HTD_21 END
-		LPF ADD_ITEM_EQEFFECT INT_VAR silent = 1 target = 1 opcode = 318 timing = 2 STR_VAR resource = C0HTD_20 END
 		LPF ADD_ITEM_EQEFFECT INT_VAR silent = 1 target = 1 opcode = 321 timing = 1 STR_VAR resource = C0HTD_25 END
 		LPF ADD_ITEM_EQEFFECT INT_VAR silent = 1 target = 1 opcode = 321 timing = 1 STR_VAR resource = C0HTD_24 END
 		LPF ADD_ITEM_EQEFFECT INT_VAR silent = 1 target = 1 opcode = 321 timing = 1 STR_VAR resource = C0HTD_23 END
 		LPF ADD_ITEM_EQEFFECT INT_VAR silent = 1 target = 1 opcode = 321 timing = 1 STR_VAR resource = C0HTD_22 END
 		LPF ADD_ITEM_EQEFFECT INT_VAR silent = 1 target = 1 opcode = 321 timing = 1 STR_VAR resource = C0HTD_21 END
-		LPF ADD_ITEM_EQEFFECT INT_VAR silent = 1 target = 1 opcode = 321 timing = 1 STR_VAR resource = C0HTD_20 END
 
 	  INNER_ACTION BEGIN
 	  PRINT ~%SOURCE_RES% is chain mail.~
@@ -170,12 +165,10 @@ COPY_EXISTING_REGEXP GLOB ~.*\.itm~ ~override~ //copies all item files
 		LPF ADD_ITEM_EQEFFECT INT_VAR silent = 1 target = 1 opcode = 318 timing = 2 STR_VAR resource = C0HTD_24 END
 		LPF ADD_ITEM_EQEFFECT INT_VAR silent = 1 target = 1 opcode = 318 timing = 2 STR_VAR resource = C0HTD_23 END
 		LPF ADD_ITEM_EQEFFECT INT_VAR silent = 1 target = 1 opcode = 318 timing = 2 STR_VAR resource = C0HTD_22 END
-		LPF ADD_ITEM_EQEFFECT INT_VAR silent = 1 target = 1 opcode = 318 timing = 2 STR_VAR resource = C0HTD_21 END
 		LPF ADD_ITEM_EQEFFECT INT_VAR silent = 1 target = 1 opcode = 321 timing = 1 STR_VAR resource = C0HTD_25 END
 		LPF ADD_ITEM_EQEFFECT INT_VAR silent = 1 target = 1 opcode = 321 timing = 1 STR_VAR resource = C0HTD_24 END
 		LPF ADD_ITEM_EQEFFECT INT_VAR silent = 1 target = 1 opcode = 321 timing = 1 STR_VAR resource = C0HTD_23 END
 		LPF ADD_ITEM_EQEFFECT INT_VAR silent = 1 target = 1 opcode = 321 timing = 1 STR_VAR resource = C0HTD_22 END
-		LPF ADD_ITEM_EQEFFECT INT_VAR silent = 1 target = 1 opcode = 321 timing = 1 STR_VAR resource = C0HTD_21 END
 		
 	  INNER_ACTION BEGIN
 	  PRINT ~%SOURCE_RES% is elven chain mail.~
@@ -202,14 +195,12 @@ COPY_EXISTING_REGEXP GLOB ~.*\.itm~ ~override~ //copies all item files
 		LPF ADD_ITEM_EQEFFECT INT_VAR silent = 1 target = 1 opcode = 318 timing = 2 STR_VAR resource = C0HTD_22 END
 		LPF ADD_ITEM_EQEFFECT INT_VAR silent = 1 target = 1 opcode = 318 timing = 2 STR_VAR resource = C0HTD_21 END
 		LPF ADD_ITEM_EQEFFECT INT_VAR silent = 1 target = 1 opcode = 318 timing = 2 STR_VAR resource = C0HTD_20 END
-		LPF ADD_ITEM_EQEFFECT INT_VAR silent = 1 target = 1 opcode = 318 timing = 2 STR_VAR resource = C0HTD_19 END
 		LPF ADD_ITEM_EQEFFECT INT_VAR silent = 1 target = 1 opcode = 321 timing = 1 STR_VAR resource = C0HTD_25 END
 		LPF ADD_ITEM_EQEFFECT INT_VAR silent = 1 target = 1 opcode = 321 timing = 1 STR_VAR resource = C0HTD_24 END
 		LPF ADD_ITEM_EQEFFECT INT_VAR silent = 1 target = 1 opcode = 321 timing = 1 STR_VAR resource = C0HTD_23 END
 		LPF ADD_ITEM_EQEFFECT INT_VAR silent = 1 target = 1 opcode = 321 timing = 1 STR_VAR resource = C0HTD_22 END
 		LPF ADD_ITEM_EQEFFECT INT_VAR silent = 1 target = 1 opcode = 321 timing = 1 STR_VAR resource = C0HTD_21 END
 		LPF ADD_ITEM_EQEFFECT INT_VAR silent = 1 target = 1 opcode = 321 timing = 1 STR_VAR resource = C0HTD_20 END
-		LPF ADD_ITEM_EQEFFECT INT_VAR silent = 1 target = 1 opcode = 321 timing = 1 STR_VAR resource = C0HTD_19 END
 		
 	  INNER_ACTION BEGIN
 	  PRINT ~%SOURCE_RES% is splint mail.~
@@ -240,7 +231,6 @@ COPY_EXISTING_REGEXP GLOB ~.*\.itm~ ~override~ //copies all item files
 		LPF ADD_ITEM_EQEFFECT INT_VAR silent = 1 target = 1 opcode = 318 timing = 2 STR_VAR resource = C0HTD_19 END
 		LPF ADD_ITEM_EQEFFECT INT_VAR silent = 1 target = 1 opcode = 318 timing = 2 STR_VAR resource = C0HTD_18 END
 		LPF ADD_ITEM_EQEFFECT INT_VAR silent = 1 target = 1 opcode = 318 timing = 2 STR_VAR resource = C0HTD_17 END
-		LPF ADD_ITEM_EQEFFECT INT_VAR silent = 1 target = 1 opcode = 318 timing = 2 STR_VAR resource = C0HTD_16 END
 		LPF ADD_ITEM_EQEFFECT INT_VAR silent = 1 target = 1 opcode = 321 timing = 1 STR_VAR resource = C0HTD_25 END
 		LPF ADD_ITEM_EQEFFECT INT_VAR silent = 1 target = 1 opcode = 321 timing = 1 STR_VAR resource = C0HTD_24 END
 		LPF ADD_ITEM_EQEFFECT INT_VAR silent = 1 target = 1 opcode = 321 timing = 1 STR_VAR resource = C0HTD_23 END
@@ -250,7 +240,6 @@ COPY_EXISTING_REGEXP GLOB ~.*\.itm~ ~override~ //copies all item files
 		LPF ADD_ITEM_EQEFFECT INT_VAR silent = 1 target = 1 opcode = 321 timing = 1 STR_VAR resource = C0HTD_19 END
 		LPF ADD_ITEM_EQEFFECT INT_VAR silent = 1 target = 1 opcode = 321 timing = 1 STR_VAR resource = C0HTD_18 END
 		LPF ADD_ITEM_EQEFFECT INT_VAR silent = 1 target = 1 opcode = 321 timing = 1 STR_VAR resource = C0HTD_17 END
-		LPF ADD_ITEM_EQEFFECT INT_VAR silent = 1 target = 1 opcode = 321 timing = 1 STR_VAR resource = C0HTD_16 END
 
 	  INNER_ACTION BEGIN
 	  PRINT ~%SOURCE_RES% is plate mail.~
@@ -276,8 +265,8 @@ END
 				READ_SHORT ef_off+i*0x30 opcode
 				READ_LONG ef_off+i*0x30+8 effect
 				PATCH_IF ((opcode = 0) AND (effect = 4)) BEGIN
-					LPF ADD_ITEM_EQEFFECT INT_VAR silent = 1 target = 1 opcode = 318 timing = 2 STR_VAR resource = C0HTD_15 END
-					LPF ADD_ITEM_EQEFFECT INT_VAR silent = 1 target = 1 opcode = 321 timing = 1 STR_VAR resource = C0HTD_15 END
+					LPF ADD_ITEM_EQEFFECT INT_VAR silent = 1 target = 1 opcode = 318 timing = 2 STR_VAR resource = C0HTD_16 END
+					LPF ADD_ITEM_EQEFFECT INT_VAR silent = 1 target = 1 opcode = 321 timing = 1 STR_VAR resource = C0HTD_16 END
 					
     				  PATCH_FOR_EACH offset IN 0x50 0x54 BEGIN
 							SPRINT max_dex_modifier_plate ~Maximum Dexterity AC Modifier: 2~
@@ -301,21 +290,29 @@ END
 				READ_SHORT ef_off+i*0x30 opcode
 				READ_SHORT ef_off+i*0x30+3 power
 				READ_LONG ef_off+i*0x30+8 effect
-				READ_ASCII ef_off+i*0x30+20 resref
-				READ_LONG ef_off+i*0x30+44 special
+				READ_ASCII ef_off+i*0x30+14 eff_resref
 				PATCH_IF (((row4_usability BAND 0b01000000) = 0b01000000)) OR ((opcode = 319) AND (power = 2) AND (effect = IS_FAVORED_SOUL)) BEGIN
-      					    SET i = ef_num // kill loop
 						SET non_metal_armor = 0
+      					    SET i = ef_num // kill loop
 				END
-
+				END
+				FOR (i=0;i<ef_num;++i) BEGIN
+				READ_SHORT ef_off+i*0x30 opcode
+				READ_SHORT ef_off+i*0x30+3 power
+				READ_LONG ef_off+i*0x30+8 effect
+				READ_ASCII ef_off+i*0x30+20 eff_resref
+				PATCH_IF ("%eff_resref%" STRING_EQUAL_CASE ~C0HTD_NM~) BEGIN
+						SET non_metal_armor = 1
+      					    SET i = ef_num // kill loop
+				END
 				END
 				PATCH_IF (((druid_usability BAND 0b01000000) = 0b00000000)) BEGIN
 						SET non_metal_armor = 1
 				END
-				PATCH_IF (type = 2) AND (appearance = 16692) AND (((row4_usability BAND 0b01000000) = 0b00000000) OR ((druid_usability BAND 0b01000000) = 0b00000000)) AND (non_metal_armor = 1) BEGIN
-						LPF DELETE_EFFECT STR_VAR match_resource = C0HTD_14 END
-						LPF DELETE_EFFECT STR_VAR match_resource = C0HTD_15 END
-						LPF DELETE_EFFECT STR_VAR match_resource = C0HTD_16 END
+				PATCH_IF (type = 2) AND (appearance = 16692) AND (((row4_usability BAND 0b01000000) = 0b00000000) OR ((druid_usability BAND 0b01000000) = 0b00000000)) AND (non_metal_armor = 1) OR (~%SOURCE_RES%~ STRING_COMPARE_CASE "PLAT22" = 0) BEGIN
+						LPF DELETE_EFFECT STR_VAR silent = 1 match_resource = C0HTD_15 END
+						LPF DELETE_EFFECT STR_VAR silent = 1 match_resource = C0HTD_16 END
+						LPF DELETE_EFFECT STR_VAR silent = 1 match_resource = C0HTD_17 END
 	  					INNER_ACTION BEGIN
 	  					PRINT ~%SOURCE_RES% is non-metal plate mail.~
       					END  
@@ -453,15 +450,15 @@ COPY_EXISTING_REGEXP GLOB ~.*\.itm~ ~override~ //copies all item files
         READ_STRREF ~%offset%~ desc
         PATCH_IF ("%desc%" STRING_COMPARE_REGEXP ~<Invalid Strref -?[0-9]+>~) BEGIN // checking for valid content in string
           INNER_PATCH_SAVE new_desc ~%desc%~ BEGIN
-            REPLACE_TEXTUALLY EXACT_MATCH ~%armor_class_desc%+1~ ~%armor_class_desc%[AC_BONUS]+5~
-            REPLACE_TEXTUALLY EXACT_MATCH ~%armor_class_desc%+2~ ~%armor_class_desc%[AC_BONUS]+6~
-            REPLACE_TEXTUALLY EXACT_MATCH ~%armor_class_desc%+3~ ~%armor_class_desc%[AC_BONUS]+7~
-            REPLACE_TEXTUALLY EXACT_MATCH ~%armor_class_desc%+4~ ~%armor_class_desc%[AC_BONUS]+8~
-            REPLACE_TEXTUALLY EXACT_MATCH ~%armor_class_desc%+5~ ~%armor_class_desc%[AC_BONUS]+9~
-            REPLACE_TEXTUALLY EXACT_MATCH ~%armor_class_desc%+6~ ~%armor_class_desc%[AC_BONUS]+10~
-            REPLACE_TEXTUALLY EXACT_MATCH ~%armor_class_desc%+7~ ~%armor_class_desc%[AC_BONUS]+11~
-            REPLACE_TEXTUALLY EXACT_MATCH ~%armor_class_desc%+8~ ~%armor_class_desc%[AC_BONUS]+12~
-            REPLACE_TEXTUALLY EXACT_MATCH ~%armor_class_desc%+9~ ~%armor_class_desc%[AC_BONUS]+13~
+            REPLACE_TEXTUALLY EXACT_MATCH ~%armor_class_desc%+1~ ~%armor_class_desc%[AC_BONUS]+4~
+            REPLACE_TEXTUALLY EXACT_MATCH ~%armor_class_desc%+2~ ~%armor_class_desc%[AC_BONUS]+5~
+            REPLACE_TEXTUALLY EXACT_MATCH ~%armor_class_desc%+3~ ~%armor_class_desc%[AC_BONUS]+6~
+            REPLACE_TEXTUALLY EXACT_MATCH ~%armor_class_desc%+4~ ~%armor_class_desc%[AC_BONUS]+7~
+            REPLACE_TEXTUALLY EXACT_MATCH ~%armor_class_desc%+5~ ~%armor_class_desc%[AC_BONUS]+8~
+            REPLACE_TEXTUALLY EXACT_MATCH ~%armor_class_desc%+6~ ~%armor_class_desc%[AC_BONUS]+9~
+            REPLACE_TEXTUALLY EXACT_MATCH ~%armor_class_desc%+7~ ~%armor_class_desc%[AC_BONUS]+10~
+            REPLACE_TEXTUALLY EXACT_MATCH ~%armor_class_desc%+8~ ~%armor_class_desc%[AC_BONUS]+11~
+            REPLACE_TEXTUALLY EXACT_MATCH ~%armor_class_desc%+9~ ~%armor_class_desc%[AC_BONUS]+12~
             REPLACE_TEXTUALLY ~%equipped_abilities%~ ~%equipped_abilities%
 %thac0_penalty_desc%~
 		  END
