@@ -1,0 +1,27 @@
+  COPY_EXISTING_REGEXP GLOB ~^.+\.itm$~ ~override~ // looking for gems and jewelry
+    READ_SHORT 0x34 gold
+    READ_SHORT 0x1c type     ELSE 0
+    READ_SHORT 0x70 fx_num   ELSE 1
+    PATCH_IF (((type =  1) OR      // amulets
+               (type = 10) OR      // rings
+               (type = 33) OR      // gold
+               (type = 34) OR      // gems
+               (type = 59)) AND    // furs or pelts
+              (fx_num = 0)) BEGIN  // with no global effects
+      SET add = 1
+      READ_SHORT 0x68 abil_num ELSE 0
+      READ_LONG  0x64 abil_off ELSE 0
+      FOR (index = 0 ; index < abil_num ; ++index) BEGIN
+        READ_SHORT (abil_off + 0x1e + (0x38 * index)) abil_fx_num
+        PATCH_IF ("%abil_fx_num%" > 0) BEGIN
+          SET add = 0
+          SET index = abil_num // kill loop
+        END
+      END
+      PATCH_IF add BEGIN // if no effects, add to array
+        PATCH_IF (gold > %divide_value%) BEGIN
+        WRITE_SHORT 0x34 ((gold / 10) * %divide_value%)
+        END
+      END  
+    END
+    BUT_ONLY

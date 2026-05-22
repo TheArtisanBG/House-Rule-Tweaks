@@ -1,0 +1,9 @@
+  COPY_EXISTING_REGEXP GLOB ~^.+\.itm$~ ~override~ // looking for gems and jewelry
+    READ_SHORT 0x34 gold
+    READ_SHORT 0x1c type     ELSE 0
+    PATCH_IF (type =  9) BEGIN
+        PATCH_IF (gold > %divide_value%) BEGIN
+        WRITE_SHORT 0x34 ((gold / 10) * %divide_value%)
+        END
+    END
+    BUT_ONLY

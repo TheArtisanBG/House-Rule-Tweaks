@@ -433,15 +433,15 @@ COPY_EXISTING_REGEXP GLOB ~.*\.itm~ ~override~ //copies all item files
         WRITE_BYTE    0x20 (row3 BOR 0b00110000)
 
 	  LPF ADD_ITEM_EQEFFECT INT_VAR opcode = 54 target = 1 timing = 2 parameter2 = 0 parameter1 = %-2% STR_VAR resource = C0_HT_A3 END
-	  LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 0 match_target = 1 match_timing = 2 match_parameter2 = 0 match_parameter1 = 9 parameter1 = 13 END
-	  LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 0 match_target = 1 match_timing = 2 match_parameter2 = 0 match_parameter1 = 8 parameter1 = 12 END
-	  LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 0 match_target = 1 match_timing = 2 match_parameter2 = 0 match_parameter1 = 7 parameter1 = 11 END
-	  LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 0 match_target = 1 match_timing = 2 match_parameter2 = 0 match_parameter1 = 6 parameter1 = 10 END
-	  LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 0 match_target = 1 match_timing = 2 match_parameter2 = 0 match_parameter1 = 5 parameter1 = 9 END
-	  LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 0 match_target = 1 match_timing = 2 match_parameter2 = 0 match_parameter1 = 4 parameter1 = 8 END
-	  LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 0 match_target = 1 match_timing = 2 match_parameter2 = 0 match_parameter1 = 3 parameter1 = 7 END
-	  LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 0 match_target = 1 match_timing = 2 match_parameter2 = 0 match_parameter1 = 2 parameter1 = 6 END
-	  LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 0 match_target = 1 match_timing = 2 match_parameter2 = 0 match_parameter1 = 1 parameter1 = 5 END
+	  LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 0 match_target = 1 match_timing = 2 match_parameter2 = 0 match_parameter1 = 9 parameter1 = 12 END
+	  LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 0 match_target = 1 match_timing = 2 match_parameter2 = 0 match_parameter1 = 8 parameter1 = 11 END
+	  LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 0 match_target = 1 match_timing = 2 match_parameter2 = 0 match_parameter1 = 7 parameter1 = 10 END
+	  LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 0 match_target = 1 match_timing = 2 match_parameter2 = 0 match_parameter1 = 6 parameter1 = 9 END
+	  LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 0 match_target = 1 match_timing = 2 match_parameter2 = 0 match_parameter1 = 5 parameter1 = 8 END
+	  LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 0 match_target = 1 match_timing = 2 match_parameter2 = 0 match_parameter1 = 4 parameter1 = 7 END
+	  LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 0 match_target = 1 match_timing = 2 match_parameter2 = 0 match_parameter1 = 3 parameter1 = 6 END
+	  LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 0 match_target = 1 match_timing = 2 match_parameter2 = 0 match_parameter1 = 2 parameter1 = 5 END
+	  LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 0 match_target = 1 match_timing = 2 match_parameter2 = 0 match_parameter1 = 1 parameter1 = 4 END
 
       PATCH_FOR_EACH offset IN 0x50 0x54 BEGIN
 			TEXT_SPRINT equipped_abilities ~Equipped abilities:~

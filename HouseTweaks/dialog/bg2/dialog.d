@@ -1,61 +1,66 @@
 CHAIN IF WEIGHT #-1 ~Global("C0ElgeaReward","GLOBAL",1)~ THEN WELTHER a1
-@13
+~House Tweaks: INT/WIS/CHA-based Bonus Spell Slots~
 END
-++ @14 + a1.1
-++ @15 + a1.1
+++ ~House Tweaks: Warrior HLAs~ + a1.1
+++ ~Resist Magic~ + a1.1
 
 CHAIN WELTHER a1.1
-@16
-= @17
+~Resist Magic
+This ability allows the warrior to temporarily tap a great inner strength and fight off the effects of malevolent magic. For 5 rounds, the warrior gains a +10 bonus to all saves. In addition, the warrior absorbs the next 20 spell level's worth of spells cast upon <PRO_HIMHER>. The saving throw bonus always persists for the full duration.~
+= ~Critical Strike~
 END
-++ @18 + a1.2
-++ @19 + a1.2
+++ ~Critical Strike
+A high-level warrior's intimate knowledge of vital spots on opponents allows <PRO_HIMHER> to, once per day, concentrate <PRO_HISHER> next attack to strike a vital area. With this ability, the warrior's next attack is a natural 20, a critical hit that deals 4x damage (2x against enemies immune to critical hits).
+
+Requires: Power Attack~ + a1.2
+++ ~War Cry~ + a1.2
 
 CHAIN WELTHER a1.2
-@20
+~War Cry
+With a War Cry, the warrior lets out an invigorating roar, healing <PRO_HISHER> hit points to full in addition to removing fatigue and restoring drained levels.~
 DO ~GiveItem("MISC5O",Player1)
 EscapeArea()~ EXIT
 
 EXTEND_TOP GORCAMB 54
-++ @21 EXTERN GORCAMB AES-DECK
-++ @9 DO ~AddXP2DA("PLOT2B")
+++ ~House Tweaks: Improved Dialogues (BG:EE)~ EXTERN GORCAMB AES-DECK
+++ ~Constitution Bonuses for All Classes + Regeneration Changes~ DO ~AddXP2DA("PLOT2B")
 ClearAllActions()
 StartCutSceneMode()
 StartCutSceneEx("cut203a",FALSE)~ EXIT
 END
 
 CHAIN GORCAMB AES-DECK
-@22
-= @23
-= @24
+~This component must be installed on BG:EE.~
+= ~Officer Zelas~
+= ~House Tweaks: Not-So-Indestructible Rats~
 END
-++ @25 DO ~ReallyForceSpell(LastTalkedToBy,DECK_XP_DRAIN)~ EXTERN GORCAMB AES-DECK-ACCEPTED
-++ @26 DO ~ReallyForceSpell(LastTalkedToBy,DECK_VITALITY_DRAIN)~ EXTERN GORCAMB AES-DECK-ACCEPTED
-++ @27 EXTERN GORCAMB AES-DECK-REFUSED
-++ @28 EXTERN GORCAMB 55
+++ ~House Tweaks: Good-Aligned Roleplay Rewards (BG2:EE)~ DO ~ReallyForceSpell(LastTalkedToBy,DECK_XP_DRAIN)~ EXTERN GORCAMB AES-DECK-ACCEPTED
+++ ~This component must be installed on BG2:EE.~ DO ~ReallyForceSpell(LastTalkedToBy,DECK_VITALITY_DRAIN)~ EXTERN GORCAMB AES-DECK-ACCEPTED
+++ ~House Tweaks: Cloak of Dragomir only decreases stats in daylight~ EXTERN GORCAMB AES-DECK-REFUSED
+++ ~House Tweaks: Give Stat Bonuses to EENPCs in BG2 (except Hexxat)~ EXTERN GORCAMB 55
 
 CHAIN GORCAMB AES-DECK-ACCEPTED
-@29
+~House Tweaks: Useful Plot Items~
 DO ~GiveItem("deck",LastTalkedToBy)~
-= @30
+= ~House Tweaks: Faster Troll Unconsciousness~
 COPY_TRANS GORCAMB 54
 
 CHAIN GORCAMB AES-DECK-REFUSED
-@31
+~House Tweaks: Restore Reputation Increase Sound Effect for BG2~
 DO ~GiveItem("deck",LastTalkedToBy)~
-= @30
+= ~House Tweaks: Faster Troll Unconsciousness~
 COPY_TRANS GORCAMB 54
 
 BEGIN C0DMALTR
 
 CHAIN IF WEIGHT #-1 ~True()~ THEN C0DMALTR a1
-@32
+~The Party's Reputation Has Increased~ [REPUP]
 END
 + ~!Alignment(Lasttalkedtoby(Myself),MASK_EVIL)
 OR(2)
 Class(Lasttalkedtoby(Myself),PALADIN)
-Class(Lasttalkedtoby(Myself),CLERIC_ALL)~ + @33 + a1.1
-++ @34 DO ~ActionOverride(Player1,ApplyDamage(Myself,50,MAGIC))
+Class(Lasttalkedtoby(Myself),CLERIC_ALL)~ + ~House Tweaks: Race Text Patch~ + a1.1
+++ ~House Tweaks: Hoodless Thief Avatars~ DO ~ActionOverride(Player1,ApplyDamage(Myself,50,MAGIC))
 ActionOverride(Player1,ApplySpell(Myself,WIZARD_ENERGY_DRAIN))
 ActionOverride(Player2,ApplyDamage(Myself,50,MAGIC))
 ActionOverride(Player2,ApplySpell(Myself,WIZARD_ENERGY_DRAIN))
@@ -67,10 +72,10 @@ ActionOverride(Player5,ApplyDamage(Myself,50,MAGIC))
 ActionOverride(Player5,ApplySpell(Myself,WIZARD_ENERGY_DRAIN))
 ActionOverride(Player6,ApplyDamage(Myself,50,MAGIC))
 ActionOverride(Player6,ApplySpell(Myself,WIZARD_ENERGY_DRAIN))~ + a1.1
-++ @35 EXIT
+++ ~House Tweaks: NPC Soundsets for Icewind Dale~ EXIT
 
 CHAIN C0DMALTR a1.1
-@36
+~This component must be installed on IWD:EE.~
 DO ~StartCutsceneMode()
 	ReallyForceSpell(LastTrigger,RED_EFFECT)
     CreateVisualEffect("SPPORTAL",[2724.1143])
