@@ -60,9 +60,6 @@ COPY ~%MOD_FOLDER%/2da/strmodex.2da~ ~override~
 BEGIN ~House Tweaks: Revised Dexterity Bonuses~ DESIGNATED 0045
 COPY ~%MOD_FOLDER%/2da/dexmod.2da~ ~override~
 
-BEGIN ~House Tweaks: Revised Armor, Shield and Dexterity Armor Class Bonuses~ DESIGNATED 0047
-INCLUDE ~%MOD_FOLDER%/lib/dex_armor_tweaks.tpa~
-
 BEGIN ~Constitution Bonuses for All Classes + Regeneration Changes~ DESIGNATED 0009
 SUBCOMPONENT ~House Tweaks: Rebalanced Constitution Bonuses~
 COPY ~%MOD_FOLDER%/2da/hpconbon.2da~ ~override~
