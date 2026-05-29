@@ -400,3 +400,7 @@ INCLUDE ~%MOD_FOLDER%/lib/level20xp.tpa~
 BEGIN ~House Tweaks: Remove Experience from Traps, Locks and Scrolls~ DESIGNATED 0050
 
 INCLUDE ~%MOD_FOLDER%/lib/no_exp.tpa~
+
+BEGIN ~House Tweaks: Remove Unnecessary Persistent Visuals from Long-Duration Spells~ DESIGNATED 0051
+
+INCLUDE ~%MOD_FOLDER%/lib/remove_effects.tpa~
