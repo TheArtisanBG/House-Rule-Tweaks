@@ -12,7 +12,7 @@ COPY_EXISTING ~splprot.2da~ ~override~
 	  END
 	END
 
-COPY_EXISTING ~C0APR__.SPL~ ~OVERRIDE~
+COPY_EXISTING ~C0APR_#.SPL~ ~OVERRIDE~
 LPF ALTER_EFFECT INT_VAR match_opcode = 326 parameter2 = C0HT_THAC0_LTEQUALS END
 
 COPY_EXISTING ~C0APR_H.SPL~ ~OVERRIDE~
@@ -140,11 +140,12 @@ COPY_EXISTING_REGEXP GLOB ~^.+\.cre$~ ~override~
    END
       BUT_ONLY
 	  
-COPY_EXISTING_REGEXP GLOB ~^.+\.spl$~ ~override~ 
+COPY_EXISTING_REGEXP GLOB ~^.+\.itm$~ ~override~ 
    LPF ALTER_EFFECT
       INT_VAR
       silent = 1
       match_opcode = 54
+      match_parameter2 = 0
       match_timing = 0
       opcode = 278
    END
@@ -152,6 +153,7 @@ COPY_EXISTING_REGEXP GLOB ~^.+\.spl$~ ~override~
       INT_VAR
       silent = 1
       match_opcode = 54
+      match_parameter2 = 0
       match_timing = 2
       opcode = 278
    END
@@ -159,6 +161,7 @@ COPY_EXISTING_REGEXP GLOB ~^.+\.spl$~ ~override~
       INT_VAR
       silent = 1
       match_opcode = 54
+      match_parameter2 = 0
       match_timing = 3
       opcode = 278
    END
@@ -166,6 +169,7 @@ COPY_EXISTING_REGEXP GLOB ~^.+\.spl$~ ~override~
       INT_VAR
       silent = 1
       match_opcode = 54
+      match_parameter2 = 0
       match_timing = 5
       opcode = 278
    END
@@ -173,6 +177,7 @@ COPY_EXISTING_REGEXP GLOB ~^.+\.spl$~ ~override~
       INT_VAR
       silent = 1
       match_opcode = 54
+      match_parameter2 = 0
       match_timing = 6
       opcode = 278
    END
@@ -180,6 +185,7 @@ COPY_EXISTING_REGEXP GLOB ~^.+\.spl$~ ~override~
       INT_VAR
       silent = 1
       match_opcode = 54
+      match_parameter2 = 0
       match_timing = 8
       opcode = 278
    END
@@ -187,6 +193,66 @@ COPY_EXISTING_REGEXP GLOB ~^.+\.spl$~ ~override~
       INT_VAR
       silent = 1
       match_opcode = 54
+      match_parameter2 = 0
+      match_timing = 10
+      opcode = 278
+   END
+      BUT_ONLY
+
+COPY_EXISTING_REGEXP GLOB ~^.+\.spl$~ ~override~ 
+   LPF ALTER_EFFECT
+      INT_VAR
+      silent = 1
+      match_opcode = 54
+      match_parameter2 = 0
+      match_timing = 0
+      opcode = 278
+   END
+   LPF ALTER_EFFECT
+      INT_VAR
+      silent = 1
+      match_opcode = 54
+      match_parameter2 = 0
+      match_timing = 2
+      opcode = 278
+   END
+   LPF ALTER_EFFECT
+      INT_VAR
+      silent = 1
+      match_opcode = 54
+      match_parameter2 = 0
+      match_timing = 3
+      opcode = 278
+   END
+   LPF ALTER_EFFECT
+      INT_VAR
+      silent = 1
+      match_opcode = 54
+      match_parameter2 = 0
+      match_timing = 5
+      opcode = 278
+   END
+   LPF ALTER_EFFECT
+      INT_VAR
+      silent = 1
+      match_opcode = 54
+      match_parameter2 = 0
+      match_timing = 6
+      opcode = 278
+   END
+   LPF ALTER_EFFECT
+      INT_VAR
+      silent = 1
+      match_opcode = 54
+      match_parameter2 = 0
+      match_timing = 8
+      opcode = 278
+   END
+   LPF ALTER_EFFECT
+      INT_VAR
+      silent = 1
+      match_opcode = 54
+      match_parameter2 = 0
       match_timing = 10
       opcode = 278
    END
