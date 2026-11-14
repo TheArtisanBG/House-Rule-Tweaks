@@ -1,5 +1,6 @@
 BACKUP ~weidu_external/backup/HouseTweaks~
 AUTHOR ~Artemius_I~
+VERSION ~v3.5~
 ALWAYS
   INCLUDE ~%MOD_FOLDER%/lib/eet.tph~
   INCLUDE ~%MOD_FOLDER%/lib/functions.tph~
@@ -128,18 +129,18 @@ COPY_EXISTING ~OHHKORK1.SPL~ ~OVERRIDE~
 LPF ALTER_EFFECT INT_VAR match_opcode = 318 parameter2 = C0SADAY END
 
 BEGIN ~House Tweaks: Give Stat Bonuses to EENPCs in BG2 (except Hexxat)~ DESIGNATED 0018
-REQUIRE_PREDICATE (GAME_IS ~bg2ee~) ~This component must be installed on BG2:EE.~
+REQUIRE_PREDICATE (GAME_IS ~bg2ee eet~) ~This component must be installed on BG2:EE or EET.~
 INCLUDE ~%MOD_FOLDER%/lib/eenpcs.tpa~
 
 BEGIN ~House Tweaks: Useful Plot Items~ DESIGNATED 0019
-REQUIRE_PREDICATE (GAME_IS ~bg2ee~) ~This component must be installed on BG2:EE.~
+REQUIRE_PREDICATE (GAME_IS ~bg2ee eet~) ~This component must be installed on BG2:EE or EET.~
 INCLUDE ~%MOD_FOLDER%/lib/plotitems.tpa~
 
 BEGIN ~House Tweaks: Faster Troll Unconsciousness~ DESIGNATED 0020
 INCLUDE ~%MOD_FOLDER%/lib/trolls.tpa~
 
 BEGIN ~House Tweaks: Restore Reputation Increase Sound Effect for BG2~ DESIGNATED 0021
-REQUIRE_PREDICATE (GAME_IS ~bg2ee~) ~This component must be installed on BG2:EE.~
+REQUIRE_PREDICATE (GAME_IS ~bg2ee eet~) ~This component must be installed on BG2:EE or EET.~
 COPY ~%MOD_FOLDER%/Reputation/REPUP.WAV~ ~OVERRIDE~
 STRING_SET 19686 ~The Party's Reputation Has Increased~ [REPUP]
 
